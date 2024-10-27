@@ -11,6 +11,11 @@ class AppTextStyles {
     fontSize: 16.0,
     color: AppColors.primaryBlack,
   );
+  static TextStyle h1Bold = const TextStyle(
+    fontSize: 16.0,
+    color: AppColors.primaryBlack,
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle h2 = const TextStyle(
     fontSize: 16.0,
     color: AppColors.primaryBlack,

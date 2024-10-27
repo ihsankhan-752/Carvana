@@ -17,7 +17,7 @@ class AppRoutes {
       ),
       GetPage(
         name: RoutesName.loginView,
-        page: () => const LoginView(),
+        page: () => LoginView(),
         transition: Transition.leftToRightWithFade,
       ),
       GetPage(
