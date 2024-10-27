@@ -1,4 +1,5 @@
 import 'package:carvana/res/routes/routes_name.dart';
+import 'package:carvana/view/auth/forgot_password_view.dart';
 import 'package:carvana/view/auth/login_view.dart';
 import 'package:carvana/view/auth/signup_view.dart';
 import 'package:carvana/view/onboarding/first_onboarding_view.dart';
@@ -19,12 +20,14 @@ class AppRoutes {
       GetPage(
         name: RoutesName.loginView,
         page: () => LoginView(),
-        transition: Transition.leftToRightWithFade,
       ),
       GetPage(
         name: RoutesName.signUpView,
         page: () => SignUpView(),
-        transition: Transition.rightToLeftWithFade,
+      ),
+      GetPage(
+        name: RoutesName.forgotPasswordView,
+        page: () => ForgotPasswordView(),
       ),
       GetPage(
         name: RoutesName.firstOnboardingView,
