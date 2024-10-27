@@ -6,4 +6,5 @@ class RoutesName {
   static const String loginView = '/loginView';
   static const String signUpView = '/signUpView';
   static const String forgotPasswordView = '/forgotPasswordView';
+  static const String congratulationMessageView = '/congratulationMessageView';
 }

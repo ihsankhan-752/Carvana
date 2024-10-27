@@ -1,6 +1,7 @@
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';
 import 'package:carvana/res/components/logo_widget.dart';
+import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:carvana/view/auth/widgets/email_input_widget.dart';
 import 'package:carvana/view_model/controllers/auth_controller.dart';
@@ -36,7 +37,12 @@ class ForgotPasswordView extends StatelessWidget {
               SizedBox(height: Get.height * 0.05),
               EmailInputWidget(controller: authController.emailController.value),
               SizedBox(height: Get.height * 0.04),
-              const PrimaryButton(title: "Send Link"),
+              PrimaryButton(
+                onPressed: () {
+                  Get.toNamed(RoutesName.congratulationMessageView);
+                },
+                title: "Send Link",
+              ),
             ],
           ),
         ),

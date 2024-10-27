@@ -1,4 +1,5 @@
 import 'package:carvana/res/routes/routes_name.dart';
+import 'package:carvana/view/auth/congratulation_message_view.dart';
 import 'package:carvana/view/auth/forgot_password_view.dart';
 import 'package:carvana/view/auth/login_view.dart';
 import 'package:carvana/view/auth/signup_view.dart';
@@ -43,6 +44,10 @@ class AppRoutes {
         name: RoutesName.thirdOnboardingView,
         page: () => const ThirdOnboardingView(),
         transition: Transition.rightToLeftWithFade,
+      ),
+      GetPage(
+        name: RoutesName.congratulationMessageView,
+        page: () => const CongratulationMessageView(),
       ),
     ];
   }
