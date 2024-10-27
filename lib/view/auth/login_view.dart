@@ -10,6 +10,8 @@ import 'package:carvana/view_model/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../res/routes/routes_name.dart';
+
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
@@ -20,35 +22,42 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            SizedBox(height: Get.height * 0.1),
-            LogoWidget(
-              height: Get.height * 0.12,
-              width: Get.width * 0.25,
-              fontSize: 25,
-            ),
-            SizedBox(height: Get.height * 0.03),
-            Text("Welcome Back", style: AppTextStyles.h1Bold.copyWith(fontSize: 20)),
-            Text(
-              "Log in to your account using\nEmail",
-              textAlign: TextAlign.center,
-              style: AppTextStyles.h2.copyWith(fontSize: 12, color: AppColors.primaryGrey, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: Get.height * 0.05),
-            EmailInputWidget(controller: authController.emailController.value),
-            SizedBox(height: Get.height * 0.02),
-            PasswordInputWidget(controller: authController.passwordController.value),
-            SizedBox(height: Get.height * 0.02),
-            const ForgotPasswordWidget(),
-            SizedBox(height: Get.height * 0.04),
-            const PrimaryButton(title: "Log In"),
-            SizedBox(height: Get.height * 0.045),
-            const AuthFooterWidget(
-              title: "First time here?",
-              value: "Sign Up",
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: Get.height * 0.1),
+              LogoWidget(
+                height: Get.height * 0.12,
+                width: Get.width * 0.25,
+                fontSize: 25,
+              ),
+              SizedBox(height: Get.height * 0.03),
+              Text("Welcome Back", style: AppTextStyles.h1Bold.copyWith(fontSize: 20)),
+              Text(
+                "Log in to your account using\nEmail",
+                textAlign: TextAlign.center,
+                style: AppTextStyles.h2.copyWith(fontSize: 12, color: AppColors.primaryGrey, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: Get.height * 0.05),
+              EmailInputWidget(controller: authController.emailController.value),
+              SizedBox(height: Get.height * 0.02),
+              PasswordInputWidget(controller: authController.passwordController.value),
+              SizedBox(height: Get.height * 0.02),
+              const ForgotPasswordWidget(),
+              SizedBox(height: Get.height * 0.04),
+              const PrimaryButton(title: "Log In"),
+              SizedBox(height: Get.height * 0.045),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(RoutesName.signUpView);
+                },
+                child: const AuthFooterWidget(
+                  title: "First time here?",
+                  value: "Sign Up",
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
