@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class LogoWidget extends StatelessWidget {
-  const LogoWidget({super.key});
+  final double? height, width, fontSize;
+  const LogoWidget({super.key, this.height, this.width, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +15,14 @@ class LogoWidget extends StatelessWidget {
       children: [
         Center(
           child: SizedBox(
-            height: Get.height * 0.15,
-            width: Get.width * 0.35,
+            height: height ?? Get.height * 0.15,
+            width: width ?? Get.width * 0.35,
             child: Image.asset(AppImages.appLogo, fit: BoxFit.cover),
           ),
         ),
-        SizedBox(height: Get.height * 0.02),
         GradientText(
           'Carnava',
-          style: AppTextStyles.logoTextStyle,
+          style: AppTextStyles.logoTextStyle.copyWith(fontSize: fontSize ?? 40),
           colors: const [
             AppColors.secondaryColor,
             AppColors.primaryColor,

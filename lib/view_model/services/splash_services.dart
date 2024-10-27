@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class SplashServices {
   void isUserLogin() {
     Timer(const Duration(seconds: 4), () {
-      Get.toNamed(RoutesName.loginView);
+      Get.toNamed(RoutesName.firstOnboardingView);
     });
   }
 }
