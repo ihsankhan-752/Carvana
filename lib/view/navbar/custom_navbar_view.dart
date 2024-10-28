@@ -1,4 +1,8 @@
 import 'package:carvana/res/colors/app_colors.dart';
+import 'package:carvana/view/navbar/favorite/favorite_view.dart';
+import 'package:carvana/view/navbar/home/home_view.dart';
+import 'package:carvana/view/navbar/notification/notification_view.dart';
+import 'package:carvana/view/navbar/profile/profile_view.dart';
 import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,10 +70,10 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
       body: IndexedStack(
         index: _currentIndex,
         children: const [
-          Text("Home"),
-          Text("Filter"),
-          Text("Notification"),
-          Text("Profile"),
+          HomeView(),
+          FavoriteView(),
+          NotificationView(),
+          ProfileView(),
         ],
       ),
     );
