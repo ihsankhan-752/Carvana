@@ -4,14 +4,14 @@ import 'package:carvana/res/components/logo_widget.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:carvana/view/auth/widgets/email_input_widget.dart';
-import 'package:carvana/view_model/controllers/auth_controller.dart';
+import 'package:carvana/view_model/controllers/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   ForgotPasswordView({super.key});
 
-  final authController = Get.put(AuthController());
+  final authController = Get.put(AuthViewModel());
 
   @override
   Widget build(BuildContext context) {

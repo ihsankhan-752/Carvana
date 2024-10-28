@@ -1,4 +1,4 @@
-import 'package:carvana/view_model/controllers/auth_controller.dart';
+import 'package:carvana/view_model/controllers/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,7 @@ class PasswordInputWidget extends StatelessWidget {
   final TextEditingController controller;
   PasswordInputWidget({super.key, required this.controller});
 
-  final authController = Get.put(AuthController());
+  final authController = Get.put(AuthViewModel());
 
   @override
   Widget build(BuildContext context) {

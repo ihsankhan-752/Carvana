@@ -7,13 +7,13 @@ import 'package:carvana/view/auth/widgets/auth_footer_widget.dart';
 import 'package:carvana/view/auth/widgets/email_input_widget.dart';
 import 'package:carvana/view/auth/widgets/password_input_widget.dart';
 import 'package:carvana/view/auth/widgets/username_input_widget.dart';
-import 'package:carvana/view_model/controllers/auth_controller.dart';
+import 'package:carvana/view_model/controllers/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends StatelessWidget {
   SignUpView({super.key});
-  final authController = Get.put(AuthController());
+  final authController = Get.put(AuthViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,24 @@ class SignUpView extends StatelessWidget {
               SizedBox(height: Get.height * 0.02),
               PasswordInputWidget(controller: authController.passwordController.value),
               SizedBox(height: Get.height * 0.04),
-              const PrimaryButton(title: "Sign Up"),
+              Obx(() {
+                return authController.isLoading.value
+                    ? const Center(child: CircularProgressIndicator())
+                    : PrimaryButton(
+                        onPressed: () {
+                          authController
+                              .signUpUser(
+                            email: authController.emailController.value.text,
+                            password: authController.passwordController.value.text,
+                            username: authController.usernameController.value.text,
+                          )
+                              .then((e) {
+                            authController.clearTextInputs();
+                          });
+                        },
+                        title: "Sign Up",
+                      );
+              }),
               SizedBox(height: Get.height * 0.045),
               GestureDetector(
                 onTap: () {

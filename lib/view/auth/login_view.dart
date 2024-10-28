@@ -6,7 +6,7 @@ import 'package:carvana/view/auth/widgets/auth_footer_widget.dart';
 import 'package:carvana/view/auth/widgets/email_input_widget.dart';
 import 'package:carvana/view/auth/widgets/forgot_password_widget.dart';
 import 'package:carvana/view/auth/widgets/password_input_widget.dart';
-import 'package:carvana/view_model/controllers/auth_controller.dart';
+import 'package:carvana/view_model/controllers/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ import '../../res/routes/routes_name.dart';
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
-  final authController = Get.put(AuthController());
+  final authController = Get.put(AuthViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,23 @@ class LoginView extends StatelessWidget {
               SizedBox(height: Get.height * 0.02),
               const ForgotPasswordWidget(),
               SizedBox(height: Get.height * 0.04),
-              const PrimaryButton(title: "Log In"),
+              Obx(() {
+                return authController.isLoading.value
+                    ? const Center(child: CircularProgressIndicator())
+                    : PrimaryButton(
+                        onPressed: () {
+                          authController
+                              .signInUser(
+                            authController.emailController.value.text,
+                            authController.passwordController.value.text,
+                          )
+                              .then((e) {
+                            authController.clearTextInputs();
+                          });
+                        },
+                        title: "Log In",
+                      );
+              }),
               SizedBox(height: Get.height * 0.045),
               GestureDetector(
                 onTap: () {

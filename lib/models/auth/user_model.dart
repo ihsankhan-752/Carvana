@@ -34,7 +34,7 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromMap(DocumentSnapshot map) {
     return UserModel(
       userId: map['userId'] as String,
       username: map['username'] as String,
