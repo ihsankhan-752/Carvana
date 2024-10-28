@@ -1,5 +1,5 @@
-import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/repository/auth_repository.dart';
+import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,6 +50,8 @@ class AuthViewModel extends GetxController {
           licenseImage: "",
           passportImage: "",
         );
+
+        Get.toNamed(RoutesName.navbarView);
       } catch (e) {
         Utils.toastMessage(e.toString());
       } finally {
@@ -58,29 +60,25 @@ class AuthViewModel extends GetxController {
     }
   }
 
-  Future<UserModel?> signInUser(String email, String password) async {
+  Future<void> signInUser(String email, String password) async {
     if (email.isEmpty) {
       Utils.toastMessage('Email required');
-    } else if (password.isEmpty) {
-      Utils.toastMessage("Password required");
-    } else {
-      try {
-        isLoading.value = true;
-
-        UserModel? user = await _authRepository.signInUser(email, password);
-        if (user != null) {
-          Utils.toastMessage("Login Successfully");
-          return user;
-        } else {
-          Utils.toastMessage("Error in Login");
-          return null;
-        }
-      } catch (e) {
-        Utils.toastMessage(e.toString());
-      } finally {
-        isLoading.value = false;
-      }
     }
-    return null;
+
+    if (password.isEmpty) {
+      Utils.toastMessage("Password required");
+    }
+
+    try {
+      isLoading.value = true;
+
+      await _authRepository.signInUser(email, password);
+
+      Get.toNamed(RoutesName.navbarView);
+    } catch (e) {
+      Utils.toastMessage(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

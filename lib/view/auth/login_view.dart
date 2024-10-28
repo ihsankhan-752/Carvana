@@ -50,14 +50,10 @@ class LoginView extends StatelessWidget {
                     ? const Center(child: CircularProgressIndicator())
                     : PrimaryButton(
                         onPressed: () {
-                          authController
-                              .signInUser(
+                          authController.signInUser(
                             authController.emailController.value.text,
                             authController.passwordController.value.text,
-                          )
-                              .then((e) {
-                            authController.clearTextInputs();
-                          });
+                          );
                         },
                         title: "Log In",
                       );

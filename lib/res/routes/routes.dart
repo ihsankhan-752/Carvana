@@ -8,6 +8,7 @@ import 'package:carvana/view/onboarding/second_onboarding_view.dart';
 import 'package:carvana/view/onboarding/third_onboarding_view.dart';
 import 'package:get/get.dart';
 
+import '../../view/navbar/custom_navbar_view.dart';
 import '../../view/splash/splash_view.dart';
 
 class AppRoutes {
@@ -48,6 +49,10 @@ class AppRoutes {
       GetPage(
         name: RoutesName.congratulationMessageView,
         page: () => const CongratulationMessageView(),
+      ),
+      GetPage(
+        name: RoutesName.navbarView,
+        page: () => const CustomNavbarView(),
       ),
     ];
   }

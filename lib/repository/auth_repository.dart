@@ -7,14 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthRepository {
   final FirebaseAuthService _authService = FirebaseAuthService();
 
-  Future<UserModel?> signInUser(String email, String password) async {
+  Future<void> signInUser(String email, String password) async {
     User? user = await _authService.signInWithEmail(email, password);
 
     if (user != null) {
-      UserModel? userData = await FireStoreServices().getUser(user.uid);
-      return userData;
+      await FireStoreServices().getUser(user.uid);
     } else {
-      return null;
+      throw Exception("Error");
     }
   }
 

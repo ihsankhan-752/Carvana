@@ -7,4 +7,5 @@ class RoutesName {
   static const String signUpView = '/signUpView';
   static const String forgotPasswordView = '/forgotPasswordView';
   static const String congratulationMessageView = '/congratulationMessageView';
+  static const String navbarView = '/navbarView';
 }

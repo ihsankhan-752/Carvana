@@ -1,4 +1,7 @@
+import 'package:carvana/res/colors/app_colors.dart';
+import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomNavbarView extends StatefulWidget {
   const CustomNavbarView({super.key});
@@ -8,8 +11,67 @@ class CustomNavbarView extends StatefulWidget {
 }
 
 class _CustomNavbarViewState extends State<CustomNavbarView> {
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      bottomNavigationBar: Container(
+        height: Get.height * 0.07,
+        color: AppColors.primaryWhite,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomTabWidgetNavBarView(
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 0;
+                  });
+                },
+                icon: Icons.home_outlined,
+                color: _currentIndex == 0 ? AppColors.primaryColor : AppColors.primaryBlack,
+              ),
+              CustomTabWidgetNavBarView(
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 1;
+                  });
+                },
+                icon: Icons.bookmark_border,
+                color: _currentIndex == 1 ? AppColors.primaryColor : AppColors.primaryBlack,
+              ),
+              CustomTabWidgetNavBarView(
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 2;
+                  });
+                },
+                icon: Icons.notifications_active_outlined,
+                color: _currentIndex == 2 ? AppColors.primaryColor : AppColors.primaryBlack,
+              ),
+              CustomTabWidgetNavBarView(
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 3;
+                  });
+                },
+                icon: Icons.person,
+                color: _currentIndex == 3 ? AppColors.primaryColor : AppColors.primaryBlack,
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: const [
+          Text("Home"),
+          Text("Filter"),
+          Text("Notification"),
+          Text("Profile"),
+        ],
+      ),
+    );
   }
 }
