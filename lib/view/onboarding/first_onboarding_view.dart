@@ -26,7 +26,9 @@ class _FirstOnboardingViewState extends State<FirstOnboardingView> {
         backgroundColor: AppColors.primaryWhite,
         actions: [
           SkipButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(RoutesName.loginView);
+            },
           )
         ],
       ),

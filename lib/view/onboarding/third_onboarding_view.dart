@@ -26,7 +26,9 @@ class _ThirdOnboardingViewState extends State<ThirdOnboardingView> {
         backgroundColor: AppColors.primaryWhite,
         actions: [
           SkipButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(RoutesName.loginView);
+            },
           )
         ],
       ),
