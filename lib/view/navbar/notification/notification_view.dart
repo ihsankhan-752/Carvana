@@ -1,3 +1,5 @@
+import 'package:carvana/res/lists/lists.dart';
+import 'package:carvana/view/navbar/notification/widgets/notification_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class NotificationView extends StatelessWidget {
@@ -5,8 +7,15 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Notification View"),
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      itemCount: notificationList.length,
+      itemBuilder: (context, index) {
+        return NotificationCardWidget(notificationModel: notificationList[index]);
+      },
+      separatorBuilder: (context, index) {
+        return const Divider(endIndent: 10, indent: 10);
+      },
     );
   }
 }
