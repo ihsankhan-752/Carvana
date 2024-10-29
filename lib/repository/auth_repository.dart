@@ -49,4 +49,8 @@ class AuthRepository {
   Future<void> signOut() async {
     _authService.signOut();
   }
+
+  Future<UserModel?> getUser(String userId) async {
+    return await FireStoreServices().getUser(userId);
+  }
 }

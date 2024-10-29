@@ -4,6 +4,8 @@ import 'package:carvana/view/navbar/home/home_view.dart';
 import 'package:carvana/view/navbar/notification/notification_view.dart';
 import 'package:carvana/view/navbar/profile/profile_view.dart';
 import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
+import 'package:carvana/view_model/controllers/auth_view_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +18,15 @@ class CustomNavbarView extends StatefulWidget {
 
 class _CustomNavbarViewState extends State<CustomNavbarView> {
   int _currentIndex = 0;
+
+  final authController = Get.put(AuthViewModel());
+
+  @override
+  void initState() {
+    authController.fetchUserInformation(FirebaseAuth.instance.currentUser!.uid);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

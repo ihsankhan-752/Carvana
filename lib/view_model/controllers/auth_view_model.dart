@@ -1,3 +1,4 @@
+import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/repository/auth_repository.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/utils/utils.dart';
@@ -12,6 +13,7 @@ class AuthViewModel extends GetxController {
   final usernameController = TextEditingController().obs;
   RxBool isPasswordVisible = true.obs;
   RxBool isLoading = false.obs;
+  Rx<UserModel?> currentUser = Rx<UserModel?>(null);
 
   void setPasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
@@ -86,6 +88,19 @@ class AuthViewModel extends GetxController {
     try {
       await _authRepository.signOut();
       Get.toNamed(RoutesName.loginView);
+    } catch (e) {
+      Utils.toastMessage(e.toString());
+    }
+  }
+
+  Future<void> fetchUserInformation(String userId) async {
+    try {
+      UserModel? user = await _authRepository.getUser(userId);
+      if (user != null) {
+        currentUser.value = user;
+      } else {
+        Utils.toastMessage("User not found");
+      }
     } catch (e) {
       Utils.toastMessage(e.toString());
     }
