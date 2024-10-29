@@ -69,10 +69,10 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: const [
-          HomeView(),
-          FavoriteView(),
-          NotificationView(),
+        children: [
+          const HomeView(),
+          const FavoriteView(),
+          const NotificationView(),
           ProfileView(),
         ],
       ),

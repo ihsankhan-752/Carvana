@@ -45,4 +45,8 @@ class AuthRepository {
       throw GeneralException('User Sign Up Failed');
     }
   }
+
+  Future<void> signOut() async {
+    _authService.signOut();
+  }
 }

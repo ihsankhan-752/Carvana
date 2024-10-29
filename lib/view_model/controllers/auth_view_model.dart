@@ -81,4 +81,13 @@ class AuthViewModel extends GetxController {
       isLoading.value = false;
     }
   }
+
+  Future<void> signOut() async {
+    try {
+      await _authRepository.signOut();
+      Get.toNamed(RoutesName.loginView);
+    } catch (e) {
+      Utils.toastMessage(e.toString());
+    }
+  }
 }
