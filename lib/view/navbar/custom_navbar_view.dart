@@ -1,4 +1,5 @@
 import 'package:carvana/res/colors/app_colors.dart';
+import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:carvana/view/navbar/favorite/favorite_view.dart';
 import 'package:carvana/view/navbar/home/home_view.dart';
 import 'package:carvana/view/navbar/notification/notification_view.dart';
@@ -17,7 +18,7 @@ class CustomNavbarView extends StatefulWidget {
 }
 
 class _CustomNavbarViewState extends State<CustomNavbarView> {
-  int _currentIndex = 0;
+  int currentIndex = 0;
 
   final authController = Get.put(AuthViewModel());
 
@@ -30,6 +31,13 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(getAppBarTitle(currentIndex)),
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primaryWhite,
+        centerTitle: true,
+        titleTextStyle: AppTextStyles.h1Bold.copyWith(fontSize: 18, color: AppColors.primaryColor),
+      ),
       bottomNavigationBar: Container(
         height: Get.height * 0.07,
         color: AppColors.primaryWhite,
@@ -41,45 +49,45 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
               CustomTabWidgetNavBarView(
                 onPressed: () {
                   setState(() {
-                    _currentIndex = 0;
+                    currentIndex = 0;
                   });
                 },
                 icon: Icons.home_outlined,
-                color: _currentIndex == 0 ? AppColors.primaryColor : AppColors.primaryBlack,
+                color: currentIndex == 0 ? AppColors.primaryColor : AppColors.primaryBlack,
               ),
               CustomTabWidgetNavBarView(
                 onPressed: () {
                   setState(() {
-                    _currentIndex = 1;
+                    currentIndex = 1;
                   });
                 },
                 icon: Icons.bookmark_border,
-                color: _currentIndex == 1 ? AppColors.primaryColor : AppColors.primaryBlack,
+                color: currentIndex == 1 ? AppColors.primaryColor : AppColors.primaryBlack,
               ),
               CustomTabWidgetNavBarView(
                 onPressed: () {
                   setState(() {
-                    _currentIndex = 2;
+                    currentIndex = 2;
                   });
                 },
                 icon: Icons.notifications_active_outlined,
-                color: _currentIndex == 2 ? AppColors.primaryColor : AppColors.primaryBlack,
+                color: currentIndex == 2 ? AppColors.primaryColor : AppColors.primaryBlack,
               ),
               CustomTabWidgetNavBarView(
                 onPressed: () {
                   setState(() {
-                    _currentIndex = 3;
+                    currentIndex = 3;
                   });
                 },
                 icon: Icons.person,
-                color: _currentIndex == 3 ? AppColors.primaryColor : AppColors.primaryBlack,
+                color: currentIndex == 3 ? AppColors.primaryColor : AppColors.primaryBlack,
               ),
             ],
           ),
         ),
       ),
       body: IndexedStack(
-        index: _currentIndex,
+        index: currentIndex,
         children: [
           const HomeView(),
           const FavoriteView(),
@@ -88,5 +96,20 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
         ],
       ),
     );
+  }
+
+  getAppBarTitle(currentIndex) {
+    switch (currentIndex) {
+      case 0:
+        return "Home";
+      case 1:
+        return "Favorites";
+      case 2:
+        return "Notifications";
+      case 3:
+        return "Profile";
+      default:
+        return "";
+    }
   }
 }
