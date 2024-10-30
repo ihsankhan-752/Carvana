@@ -8,4 +8,7 @@ class AppImages {
       'https://img.freepik.com/premium-photo/white-porsche-911-rear-view_1268171-2566.jpg?uid=R47763994&ga=GA1.1.1663911588.1729849220&semt=ais_hybrid';
   static const String confirmMsg =
       'https://img.freepik.com/free-vector/confirmed-concept-illustration_114360-516.jpg?uid=R47763994&ga=GA1.1.1663911588.1729849220&semt=ais_hybrid';
+
+  static const String audiCar = "assets/images/audi.png";
+  static const String bmwCar = "assets/images/bmw.png";
 }

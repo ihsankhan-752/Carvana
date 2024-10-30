@@ -9,4 +9,5 @@ class AppColors {
   static const Color primaryGrey = Colors.grey;
   static const Color textInputColor = Color(0XFFEFF0F5);
   static const Color alertColor = Colors.red;
+  static const Color golderColor = Colors.amber;
 }

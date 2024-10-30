@@ -1,4 +1,5 @@
 import 'package:carvana/models/notification/notification_model.dart';
+import 'package:carvana/res/assets/app_images.dart';
 import 'package:carvana/res/assets/car_logos.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ List<NotificationModel> notificationList = const [
   ),
 ];
 
-List<CarModel> carList = [
+List<CarModel> carLogoList = [
   CarModel(carName: "Audi", carImage: CarLogos.audiLogo),
   CarModel(carName: "BMW", carImage: CarLogos.bmwLogo),
   // CarModel(carName: "Dodge", carImage: CarLogos.dodgeLogo),
@@ -37,4 +38,9 @@ List<CarModel> carList = [
   CarModel(carName: "Jaguar", carImage: CarLogos.jaguarLogo),
   CarModel(carName: "Porsche", carImage: CarLogos.porscheLogo),
   CarModel(carName: "Tesla", carImage: CarLogos.teslaLogo),
+];
+
+List<CarModel> carList = [
+  CarModel(carName: "Maserati", carImage: AppImages.audiCar),
+  CarModel(carName: "BMW 2 Series", carImage: AppImages.bmwCar),
 ];

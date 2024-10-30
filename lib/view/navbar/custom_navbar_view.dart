@@ -1,5 +1,4 @@
 import 'package:carvana/res/colors/app_colors.dart';
-import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:carvana/view/navbar/favorite/favorite_view.dart';
 import 'package:carvana/view/navbar/home/home_view.dart';
 import 'package:carvana/view/navbar/notification/notification_view.dart';
@@ -31,13 +30,6 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(getAppBarTitle(currentIndex)),
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.primaryWhite,
-        centerTitle: true,
-        titleTextStyle: AppTextStyles.h1Bold.copyWith(fontSize: 18, color: AppColors.primaryColor),
-      ),
       bottomNavigationBar: Container(
         height: Get.height * 0.07,
         color: AppColors.primaryWhite,
@@ -86,30 +78,20 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
           ),
         ),
       ),
-      body: IndexedStack(
-        index: currentIndex,
-        children: [
-          const HomeView(),
-          const FavoriteView(),
-          const NotificationView(),
-          ProfileView(),
-        ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: IndexedStack(
+            index: currentIndex,
+            children: [
+              const HomeView(),
+              const FavoriteView(),
+              const NotificationView(),
+              ProfileView(),
+            ],
+          ),
+        ),
       ),
     );
-  }
-
-  getAppBarTitle(currentIndex) {
-    switch (currentIndex) {
-      case 0:
-        return "Home";
-      case 1:
-        return "Favorites";
-      case 2:
-        return "Notifications";
-      case 3:
-        return "Profile";
-      default:
-        return "";
-    }
   }
 }
