@@ -1,5 +1,8 @@
 import 'package:carvana/models/notification/notification_model.dart';
+import 'package:carvana/res/assets/car_logos.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/car/car_model.dart';
 
 List<NotificationModel> notificationList = const [
   NotificationModel(
@@ -22,4 +25,16 @@ List<NotificationModel> notificationList = const [
     notificationDescription: 'Your booking is rejected',
     icon: Icons.cancel_outlined,
   ),
+];
+
+List<CarModel> carList = [
+  CarModel(carName: "Audi", carImage: CarLogos.audiLogo),
+  CarModel(carName: "BMW", carImage: CarLogos.bmwLogo),
+  // CarModel(carName: "Dodge", carImage: CarLogos.dodgeLogo),
+  CarModel(carName: "Ferrari", carImage: CarLogos.ferrariLogo),
+  CarModel(carName: "Ford", carImage: CarLogos.fordLogo),
+  CarModel(carName: "Honda", carImage: CarLogos.hondaLogo),
+  CarModel(carName: "Jaguar", carImage: CarLogos.jaguarLogo),
+  CarModel(carName: "Porsche", carImage: CarLogos.porscheLogo),
+  CarModel(carName: "Tesla", carImage: CarLogos.teslaLogo),
 ];
