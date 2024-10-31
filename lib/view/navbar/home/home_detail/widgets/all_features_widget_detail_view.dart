@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../res/colors/app_colors.dart';
-import '../../../../res/lists/lists.dart';
-import '../../../../res/text_styles/app_text_styles.dart';
+import '../../../../../res/colors/app_colors.dart';
+import '../../../../../res/lists/lists.dart';
+import '../../../../../res/text_styles/app_text_styles.dart';
 
 class AllFeaturesWidgetDetailView extends StatelessWidget {
   const AllFeaturesWidgetDetailView({super.key});

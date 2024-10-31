@@ -2,7 +2,7 @@ import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
-import 'package:carvana/view/navbar/home/widgets/all_features_widget_detail_view.dart';
+import 'package:carvana/view/navbar/home/home_detail/widgets/all_features_widget_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
