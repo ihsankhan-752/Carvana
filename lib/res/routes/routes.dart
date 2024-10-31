@@ -54,6 +54,11 @@ class AppRoutes {
         name: RoutesName.navbarView,
         page: () => const CustomNavbarView(),
       ),
+      // GetPage(
+      //   name: RoutesName.homeDetailView,
+      //   page: () => HomeDetailView(carModel: CarModel(carName: '', carImage: '')),
+      //   transition: Transition.rightToLeftWithFade,
+      // ),
     ];
   }
 }

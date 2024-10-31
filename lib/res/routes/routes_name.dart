@@ -8,4 +8,5 @@ class RoutesName {
   static const String forgotPasswordView = '/forgotPasswordView';
   static const String congratulationMessageView = '/congratulationMessageView';
   static const String navbarView = '/navbarView';
+  static const String homeDetailView = '/homeDetailView';
 }

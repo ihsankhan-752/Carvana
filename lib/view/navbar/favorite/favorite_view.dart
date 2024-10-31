@@ -1,3 +1,4 @@
+import 'package:carvana/view/navbar/home/widgets/all_cars_widget.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteView extends StatelessWidget {
@@ -5,8 +6,13 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Favorite View"),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        children: [
+          AllCarsWidget(),
+        ],
+      ),
     );
   }
 }
