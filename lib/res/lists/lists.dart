@@ -1,9 +1,11 @@
+import 'package:carvana/models/car/car_features_model.dart';
 import 'package:carvana/models/notification/notification_model.dart';
 import 'package:carvana/res/assets/app_images.dart';
 import 'package:carvana/res/assets/car_logos.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/car/car_model.dart';
+import '../assets/app_icons.dart';
 
 List<NotificationModel> notificationList = const [
   NotificationModel(
@@ -43,4 +45,11 @@ List<CarModel> carLogoList = [
 List<CarModel> carList = [
   CarModel(carName: "Maserati", carImage: AppImages.audiCar),
   CarModel(carName: "BMW 2 Series", carImage: AppImages.bmwCar),
+];
+
+List<CarFeaturesModel> carFeaturesList = const [
+  CarFeaturesModel(icon: AppIcons.transmissionIcon, title: "Transmission", subTitle: "Automatic"),
+  CarFeaturesModel(icon: AppIcons.seatIcon, title: "Doors & Seats", subTitle: "2 Door & 2 Seats"),
+  CarFeaturesModel(icon: AppIcons.acIcon, title: "Air Condition", subTitle: "Climate Control"),
+  CarFeaturesModel(icon: AppIcons.fuelIcon, title: "Fuel Type", subTitle: "Petrol"),
 ];

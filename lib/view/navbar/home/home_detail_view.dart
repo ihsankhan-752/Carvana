@@ -1,7 +1,10 @@
 import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/res/colors/app_colors.dart';
+import 'package:carvana/res/components/buttons/primary_button.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
+import 'package:carvana/view/navbar/home/widgets/all_features_widget_detail_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeDetailView extends StatefulWidget {
   final CarModel carModel;
@@ -30,40 +33,50 @@ class _HomeDetailViewState extends State<HomeDetailView> {
         title: Text(widget.carModel.carName, style: AppTextStyles.h1Bold.copyWith(fontSize: 18)),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: GestureDetector(
-              onPanUpdate: _onPanUpdate,
-              child: Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..rotateY(rotationY)
-                  ..rotateX(rotationX),
-                child: Image.asset(
-                  widget.carModel.carImage,
-                  fit: BoxFit.scaleDown,
-                  width: MediaQuery.of(context).size.width * 0.9,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: GestureDetector(
+                onPanUpdate: _onPanUpdate,
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()
+                    ..rotateY(rotationY)
+                    ..rotateX(rotationX),
+                  child: Image.asset(
+                    widget.carModel.carImage,
+                    fit: BoxFit.scaleDown,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "All Features",
-                  style: AppTextStyles.h1Bold.copyWith(
-                    color: AppColors.primaryColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "All Features",
+                    style: AppTextStyles.h1Bold.copyWith(),
                   ),
-                )
-              ],
+                  const SizedBox(height: 10),
+                  const AllFeaturesWidgetDetailView(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+        height: Get.height * 0.06,
+        width: Get.width,
+        child: const PrimaryButton(
+          title: "Book Now For \$1200/Day",
+        ),
       ),
     );
   }
