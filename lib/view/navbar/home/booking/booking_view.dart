@@ -1,3 +1,4 @@
+import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/calender_widget.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/pick_time_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ class _BookingViewState extends State<BookingView> {
             const CalenderWidget(),
             const SizedBox(height: 20),
             Text("Pick Time", style: AppTextStyles.h1Bold),
-            PickTimeWidget(),
+            const SizedBox(height: 10),
+            const PickTimeWidget(),
           ],
         ),
       ),
@@ -42,7 +44,9 @@ class _BookingViewState extends State<BookingView> {
         height: Get.height * 0.06,
         width: Get.width,
         child: PrimaryButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(RoutesName.checkOutView);
+          },
           title: "Book Now For \$1200/Day",
         ),
       ),
