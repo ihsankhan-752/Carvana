@@ -9,6 +9,7 @@ import 'package:carvana/view/onboarding/third_onboarding_view.dart';
 import 'package:get/get.dart';
 
 import '../../view/navbar/custom_navbar_view.dart';
+import '../../view/navbar/home/booking/booking_view.dart';
 import '../../view/splash/splash_view.dart';
 
 class AppRoutes {
@@ -53,6 +54,11 @@ class AppRoutes {
       GetPage(
         name: RoutesName.navbarView,
         page: () => const CustomNavbarView(),
+      ),
+      GetPage(
+        name: RoutesName.bookingView,
+        page: () => const BookingView(),
+        transition: Transition.rightToLeftWithFade,
       ),
       // GetPage(
       //   name: RoutesName.homeDetailView,
