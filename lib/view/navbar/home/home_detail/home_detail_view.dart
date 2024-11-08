@@ -1,9 +1,11 @@
 import 'package:carvana/models/car_model.dart';
+import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';
+import 'package:carvana/res/components/car_shimmer_loading_widget.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
-import 'package:carvana/view/navbar/home/home_detail/widgets/all_features_widget_detail_view.dart';
+import 'package:carvana/view/navbar/home/home_detail/widgets/feature_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,11 +48,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
                   transform: Matrix4.identity()
                     ..rotateY(rotationY)
                     ..rotateX(rotationX),
-                  child: Image.asset(
-                    widget.carModel.imageUrl,
-                    fit: BoxFit.scaleDown,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                  ),
+                  child: CarShimmerLoadingWidget(imageUrl: widget.carModel.imageUrl),
                 ),
               ),
             ),
@@ -64,7 +62,37 @@ class _HomeDetailViewState extends State<HomeDetailView> {
                     style: AppTextStyles.h1Bold.copyWith(),
                   ),
                   const SizedBox(height: 10),
-                  const AllFeaturesWidgetDetailView(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FeatureWidget(
+                        icon: AppIcons.transmissionIcon,
+                        title: "Transmission",
+                        dbValue: widget.carModel.transmission,
+                      ),
+                      FeatureWidget(
+                        icon: AppIcons.fuelIcon,
+                        title: "Fuel Type",
+                        dbValue: widget.carModel.fuelType,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FeatureWidget(
+                        icon: AppIcons.acIcon,
+                        title: "Air Condition",
+                        dbValue: widget.carModel.airConditioning,
+                      ),
+                      FeatureWidget(
+                        icon: AppIcons.seatIcon,
+                        title: "Doors & Seats",
+                        dbValue: "${widget.carModel.doors} Doors & ${widget.carModel.seats} Seats",
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -79,7 +107,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
           onPressed: () {
             Get.toNamed(RoutesName.bookingView);
           },
-          title: "Book Now For \$1200/Day",
+          title: "Book Now For \$ ${widget.carModel.pricePerHour.toStringAsFixed(1)} / Per Hour",
         ),
       ),
     );
