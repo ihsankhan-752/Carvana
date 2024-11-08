@@ -1,4 +1,5 @@
 import 'package:carvana/models/car_model.dart';
+import 'package:carvana/res/components/car_shimmer_loading_widget.dart';
 import 'package:carvana/view/navbar/home/home_detail/home_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,10 +42,8 @@ class CarCardWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: Get.height * 0.25,
-                      width: Get.width,
-                      child: Image.network(carModel.imageUrl, fit: BoxFit.cover),
+                    CarShimmerLoadingWidget(
+                      imageUrl: carModel.imageUrl,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
