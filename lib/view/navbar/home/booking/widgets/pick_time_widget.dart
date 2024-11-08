@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../../res/colors/app_colors.dart';
 import '../../../../../res/text_styles/app_text_styles.dart';
-import '../../../../../view_model/controllers/booking_calender_controller.dart';
+import '../../../../../view_model/controllers/booking/booking_calender_controller.dart';
 
 class PickTimeWidget extends StatefulWidget {
   const PickTimeWidget({super.key});

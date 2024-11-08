@@ -3,7 +3,7 @@ import 'package:carvana/view/navbar/favorite/favorite_view.dart';
 import 'package:carvana/view/navbar/notification/notification_view.dart';
 import 'package:carvana/view/navbar/profile/profile_view.dart';
 import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
-import 'package:carvana/view_model/controllers/auth_view_model.dart';
+import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

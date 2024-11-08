@@ -1,6 +1,6 @@
 import 'package:carvana/data/app_exceptions.dart';
-import 'package:carvana/data/services/firebase_auth_services.dart';
-import 'package:carvana/data/services/firestore_services.dart';
+import 'package:carvana/data/services/auth/firebase_auth_services.dart';
+import 'package:carvana/data/services/auth/firestore_services.dart';
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

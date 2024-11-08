@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../res/colors/app_colors.dart';
-import '../../../../../view_model/controllers/booking_calender_controller.dart';
+import '../../../../../view_model/controllers/booking/booking_calender_controller.dart';
 
 class CalenderWidget extends StatefulWidget {
   const CalenderWidget({super.key});

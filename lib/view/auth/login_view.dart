@@ -6,7 +6,7 @@ import 'package:carvana/view/auth/widgets/auth_footer_widget.dart';
 import 'package:carvana/view/auth/widgets/email_input_widget.dart';
 import 'package:carvana/view/auth/widgets/forgot_password_widget.dart';
 import 'package:carvana/view/auth/widgets/password_input_widget.dart';
-import 'package:carvana/view_model/controllers/auth_view_model.dart';
+import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

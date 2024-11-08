@@ -1,5 +1,5 @@
 import 'package:carvana/models/auth/user_model.dart';
-import 'package:carvana/repository/auth_repository.dart';
+import 'package:carvana/repository/auth/auth_repository.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/utils/utils.dart';
 import 'package:flutter/material.dart';

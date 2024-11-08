@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../home/home/widgets/all_cars_widget.dart';
-
 class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
 
@@ -11,7 +9,7 @@ class FavoriteView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          AllCarsWidget(),
+          // CarCardWidget(car: null,),
         ],
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:carvana/view_model/controllers/auth_view_model.dart';
+import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

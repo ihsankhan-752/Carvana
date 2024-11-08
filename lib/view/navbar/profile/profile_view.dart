@@ -3,7 +3,7 @@ import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/view/navbar/profile/widgets/profile_list_tile_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_document_card_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_information_widget.dart';
-import 'package:carvana/view_model/controllers/auth_view_model.dart';
+import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

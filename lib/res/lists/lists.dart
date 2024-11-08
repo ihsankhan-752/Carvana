@@ -1,10 +1,9 @@
 import 'package:carvana/models/car/car_features_model.dart';
+import 'package:carvana/models/car/ui_car_model.dart';
 import 'package:carvana/models/notification/notification_model.dart';
 import 'package:carvana/res/assets/app_images.dart';
 import 'package:carvana/res/assets/car_logos.dart';
 import 'package:flutter/material.dart';
-
-import '../../models/car/car_model.dart';
 import '../assets/app_icons.dart';
 
 List<NotificationModel> notificationList = const [
@@ -30,21 +29,20 @@ List<NotificationModel> notificationList = const [
   ),
 ];
 
-List<CarModel> carLogoList = [
-  CarModel(carName: "Audi", carImage: CarLogos.audiLogo),
-  CarModel(carName: "BMW", carImage: CarLogos.bmwLogo),
-  // CarModel(carName: "Dodge", carImage: CarLogos.dodgeLogo),
-  CarModel(carName: "Ferrari", carImage: CarLogos.ferrariLogo),
-  CarModel(carName: "Ford", carImage: CarLogos.fordLogo),
-  CarModel(carName: "Honda", carImage: CarLogos.hondaLogo),
-  CarModel(carName: "Jaguar", carImage: CarLogos.jaguarLogo),
-  CarModel(carName: "Porsche", carImage: CarLogos.porscheLogo),
-  CarModel(carName: "Tesla", carImage: CarLogos.teslaLogo),
+List<UiCarModel> carLogoList = [
+  const UiCarModel(carName: "Audi", carImage: CarLogos.audiLogo),
+  const UiCarModel(carName: "BMW", carImage: CarLogos.bmwLogo),
+  const UiCarModel(carName: "Ferrari", carImage: CarLogos.ferrariLogo),
+  const UiCarModel(carName: "Ford", carImage: CarLogos.fordLogo),
+  const UiCarModel(carName: "Honda", carImage: CarLogos.hondaLogo),
+  const UiCarModel(carName: "Jaguar", carImage: CarLogos.jaguarLogo),
+  const UiCarModel(carName: "Porsche", carImage: CarLogos.porscheLogo),
+  const UiCarModel(carName: "Tesla", carImage: CarLogos.teslaLogo),
 ];
 
-List<CarModel> carList = [
-  CarModel(carName: "Maserati", carImage: AppImages.audiCar),
-  CarModel(carName: "BMW 2 Series", carImage: AppImages.bmwCar),
+List<UiCarModel> carList = [
+  const UiCarModel(carName: "Maserati", carImage: AppImages.audiCar),
+  const UiCarModel(carName: "BMW 2 Series", carImage: AppImages.bmwCar),
 ];
 
 List<CarFeaturesModel> carFeaturesList = const [

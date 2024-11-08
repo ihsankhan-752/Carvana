@@ -1,4 +1,4 @@
-import 'package:carvana/models/car/car_model.dart';
+import 'package:carvana/models/car_model.dart';
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';
 import 'package:carvana/res/routes/routes_name.dart';
@@ -31,7 +31,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
-        title: Text(widget.carModel.carName, style: AppTextStyles.h1Bold.copyWith(fontSize: 18)),
+        title: Text(widget.carModel.name, style: AppTextStyles.h1Bold.copyWith(fontSize: 18)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
                     ..rotateY(rotationY)
                     ..rotateX(rotationX),
                   child: Image.asset(
-                    widget.carModel.carImage,
+                    widget.carModel.imageUrl,
                     fit: BoxFit.scaleDown,
                     width: MediaQuery.of(context).size.width * 0.9,
                   ),
