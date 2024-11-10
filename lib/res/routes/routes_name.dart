@@ -12,4 +12,6 @@ class RoutesName {
   static const String bookingView = '/bookingView';
   static const String checkOutView = '/checkOutView';
   static const String termsAndConditionView = '/termsAndCondition';
+  static const String aboutUsView = '/aboutUsView';
+  static const String contactUsView = '/contactUsView';
 }

@@ -60,9 +60,19 @@ class ProfileView extends StatelessWidget {
                 title: "Terms & Condition",
                 icon: Icons.note_alt_outlined,
               ),
-              const ProfileListTileWidget(
-                title: "Language",
-                icon: Icons.language,
+              ProfileListTileWidget(
+                onPressed: () {
+                  Get.toNamed(RoutesName.contactUsView);
+                },
+                title: "Contact Us",
+                icon: Icons.contact_mail_outlined,
+              ),
+              ProfileListTileWidget(
+                onPressed: () {
+                  Get.toNamed(RoutesName.aboutUsView);
+                },
+                title: "About Us",
+                icon: Icons.account_box_outlined,
               ),
               const Spacer(),
               ProfileListTileWidget(
@@ -75,7 +85,7 @@ class ProfileView extends StatelessWidget {
                 icon: Icons.logout,
                 isIconRequired: false,
               ),
-              SizedBox(height: Get.height * 0.025),
+              SizedBox(height: Get.height * 0.015),
             ],
           ),
         ),
