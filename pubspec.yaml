@@ -46,7 +46,7 @@ dependencies:
   intl: ^0.19.0
   flutter_3d_controller: ^2.0.2
   photo_view: ^0.15.0
-  font_awesome_flutter: ^10.7.0
+  font_awesome_flutter: ^10.8.0
   image_gradient: ^0.0.2
   table_calendar: ^3.1.2
   cached_network_image: ^3.4.1
