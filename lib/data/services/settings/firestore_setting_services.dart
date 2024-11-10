@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FireStoreSettingServices {
   final CollectionReference termsAndConditionCollection = FirebaseFirestore.instance.collection('termsAndConditions');
   final CollectionReference contactUsCollection = FirebaseFirestore.instance.collection('contactUs');
+  final CollectionReference aboutUsCollection = FirebaseFirestore.instance.collection('aboutUs');
 
   Future<Map<String, dynamic>> getTermsAndCondition() async {
     try {
@@ -25,6 +26,19 @@ class FireStoreSettingServices {
         return snap.docs.first.data() as Map<String, dynamic>;
       } else {
         throw GeneralException("No Contact Us Found");
+      }
+    } catch (e) {
+      throw GeneralException(e.toString());
+    }
+  }
+
+  Future<Map<String, dynamic>> getAboutUs() async {
+    try {
+      QuerySnapshot snapshot = await aboutUsCollection.get();
+      if (snapshot.docs.isNotEmpty) {
+        return snapshot.docs.first.data() as Map<String, dynamic>;
+      } else {
+        throw GeneralException("Nothing Found in About Us.");
       }
     } catch (e) {
       throw GeneralException(e.toString());

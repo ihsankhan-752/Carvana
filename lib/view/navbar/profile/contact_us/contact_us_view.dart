@@ -42,7 +42,7 @@ class ContactUsView extends StatelessWidget {
               child: Column(
                 children: [
                   Text("We Value Your Feedback!", style: AppTextStyles.h1Bold),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     "Whether you have a question, suggestion, or simply want to reach out, we’re here to listen. Our team values your feedback as it helps us continually improve.",
                     style: AppTextStyles.h2.copyWith(

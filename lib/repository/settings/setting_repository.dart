@@ -10,4 +10,8 @@ class SettingRepository {
   Future<Map<String, dynamic>> getContactUs() async {
     return await settingServices.getContactUs();
   }
+
+  Future<Map<String, dynamic>> getAboutUs() async {
+    return await settingServices.getAboutUs();
+  }
 }
