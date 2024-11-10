@@ -7,4 +7,8 @@ class CarRepository {
   Stream<List<CarModel>> getAllCars() {
     return carServices.getAllCars();
   }
+
+  Stream<List<CarModel>> getCarByBrand(String brandName) {
+    return carServices.getCarsByBrand(brandName);
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:carvana/view/navbar/home/car_brands/car_brands_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,34 +19,39 @@ class TopBrandWidget extends StatelessWidget {
         itemCount: carLogoList.length,
         itemBuilder: (context, index) {
           final car = carLogoList[index];
-          return SizedBox(
-            width: Get.width * 0.3,
-            child: Card(
-              color: AppColors.primaryWhite,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: Get.height * 0.08,
-                      width: Get.width * 0.25,
-                      child: Image.asset(
-                        car.carImage,
-                        fit: BoxFit.contain,
+          return GestureDetector(
+            onTap: () {
+              Get.to(() => CarBrandsView(brandName: car.carName));
+            },
+            child: SizedBox(
+              width: Get.width * 0.3,
+              child: Card(
+                color: AppColors.primaryWhite,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.08,
+                        width: Get.width * 0.25,
+                        child: Image.asset(
+                          car.carImage,
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      car.carName,
-                      style: AppTextStyles.h1Bold.copyWith(
-                        fontSize: 18,
-                      ),
-                    )
-                  ],
+                      const SizedBox(height: 10),
+                      Text(
+                        car.carName,
+                        style: AppTextStyles.h1Bold.copyWith(
+                          fontSize: 18,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
