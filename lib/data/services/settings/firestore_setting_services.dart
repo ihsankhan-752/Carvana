@@ -2,11 +2,16 @@ import 'package:carvana/data/app_exceptions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreSettingServices {
-  final CollectionReference termsAndConditionCollection = FirebaseFirestore.instance.collection('termsAndCondition');
+  final CollectionReference termsAndConditionCollection = FirebaseFirestore.instance.collection('termsAndConditions');
 
-  Future<void> getTermsAndCondition() async {
+  Future<Map<String, dynamic>> getTermsAndCondition() async {
     try {
-      await termsAndConditionCollection.get();
+      QuerySnapshot snapshot = await termsAndConditionCollection.get();
+      if (snapshot.docs.isNotEmpty) {
+        return snapshot.docs.first.data() as Map<String, dynamic>;
+      } else {
+        throw GeneralException("No terms and conditions found.");
+      }
     } catch (e) {
       throw GeneralException(e.toString());
     }

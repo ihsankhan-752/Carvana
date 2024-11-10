@@ -1,18 +1,21 @@
-import 'package:carvana/data/app_exceptions.dart';
-import 'package:carvana/repository/settings/setting_repository.dart';
 import 'package:get/get.dart';
+
+import '../../../data/app_exceptions.dart';
+import '../../../repository/settings/setting_repository.dart';
 
 class SettingViewController extends GetxController {
   RxBool isLoading = false.obs;
-  SettingRepository settingRepository = SettingRepository();
+  final SettingRepository settingRepository = SettingRepository();
 
-  Future<void> getTermsAndCondition() async {
+  Future<Map<String, dynamic>> getTermsAndCondition() async {
     try {
       isLoading.value = true;
-      await settingRepository.getTermsAndConditions();
+      Map<String, dynamic> data = await settingRepository.getTermsAndConditions();
+      return data;
     } catch (e) {
-      isLoading.value = false;
       throw GeneralException(e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/res/assets/app_icons.dart';
+import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/view/navbar/profile/widgets/profile_list_tile_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_document_card_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_information_widget.dart';
@@ -52,7 +53,10 @@ class ProfileView extends StatelessWidget {
                 title: "My Booking",
                 icon: Icons.calendar_month_sharp,
               ),
-              const ProfileListTileWidget(
+              ProfileListTileWidget(
+                onPressed: () {
+                  Get.toNamed(RoutesName.termsAndConditionView);
+                },
                 title: "Terms & Condition",
                 icon: Icons.note_alt_outlined,
               ),
