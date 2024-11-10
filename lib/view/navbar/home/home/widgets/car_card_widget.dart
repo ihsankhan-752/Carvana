@@ -45,11 +45,12 @@ class CarCardWidget extends StatelessWidget {
                     CarShimmerLoadingWidget(
                       imageUrl: carModel.imageUrl,
                     ),
+                    const Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(carModel.name, style: AppTextStyles.h1Bold.copyWith(fontWeight: FontWeight.w900)),
-                        Text("Automatic", style: AppTextStyles.h1.copyWith(color: AppColors.primaryGrey, fontSize: 13)),
+                        Text(carModel.transmission, style: AppTextStyles.h1.copyWith(color: AppColors.primaryGrey, fontSize: 13)),
                       ],
                     ),
                     Padding(
@@ -62,7 +63,7 @@ class CarCardWidget extends StatelessWidget {
                           const SizedBox(width: 3),
                           Text("(150)", style: AppTextStyles.h1.copyWith(color: AppColors.primaryGrey, fontSize: 14)),
                           const Spacer(),
-                          Text("\$ 540/day",
+                          Text("\$ ${carModel.pricePerHour.toStringAsFixed(1)} / Hourly",
                               style: AppTextStyles.h1Bold
                                   .copyWith(fontWeight: FontWeight.w900, fontSize: 14, color: AppColors.primaryColor)),
                         ],

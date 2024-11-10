@@ -6,12 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
   final FirebaseAuthService _authService = FirebaseAuthService();
+  final FireStoreAuthServices _authFireStoreServices = FireStoreAuthServices();
 
   Future<void> signInUser(String email, String password) async {
     User? user = await _authService.signInWithEmail(email, password);
 
     if (user != null) {
-      await FireStoreServices().getUser(user.uid);
+      FireStoreAuthServices().getUser(user.uid);
     } else {
       throw Exception("Error");
     }
@@ -40,7 +41,7 @@ class AuthRepository {
         memberSince: DateTime.now(),
       );
 
-      await FireStoreServices().saveUser(userModel);
+      await FireStoreAuthServices().saveUser(userModel);
     } else {
       throw GeneralException('User Sign Up Failed');
     }
@@ -50,7 +51,11 @@ class AuthRepository {
     await _authService.signOut();
   }
 
-  Future<UserModel?> getUser(String userId) async {
-    return await FireStoreServices().getUser(userId);
+  Stream<UserModel?> getUser(String userId) {
+    return FireStoreAuthServices().getUser(userId);
+  }
+
+  Future<void> updateUser(Map<String, dynamic> data) async {
+    await _authFireStoreServices.updateUserInformation(data);
   }
 }

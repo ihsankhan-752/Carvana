@@ -1,9 +1,16 @@
+import 'dart:io';
+
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/repository/auth/auth_repository.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/utils/utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../data/app_exceptions.dart';
+import '../../../data/services/storage/storage_services.dart';
 
 class AuthViewModel extends GetxController {
   final AuthRepository _authRepository = AuthRepository();
@@ -93,16 +100,47 @@ class AuthViewModel extends GetxController {
     }
   }
 
-  Future<void> fetchUserInformation(String userId) async {
+  void fetchUserInformation(String userId) {
     try {
-      UserModel? user = await _authRepository.getUser(userId);
-      if (user != null) {
-        currentUser.value = user;
-      } else {
-        Utils.toastMessage("User not found");
-      }
+      _authRepository.getUser(userId).listen((UserModel? user) {
+        if (user != null) {
+          currentUser.value = user;
+        } else {
+          Utils.toastMessage("User not found");
+        }
+      });
     } catch (e) {
       Utils.toastMessage(e.toString());
+    }
+  }
+
+  Future<void> updateUserInformation({
+    String? name,
+    File? image,
+  }) async {
+    try {
+      isLoading.value = true;
+      String? imageUrl;
+
+      DocumentSnapshot snap =
+          await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get();
+
+      if (image != null) {
+        imageUrl = await StorageServices().uploadFileImage(image);
+      } else {
+        imageUrl = snap['image'];
+      }
+      Map<String, dynamic> updatedData = {
+        'username': name ?? snap['username'],
+        'image': imageUrl,
+      };
+      await _authRepository.updateUser(updatedData);
+      Utils.toastMessage("Changes Saved");
+      Get.back();
+    } catch (e) {
+      throw GeneralException(e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 }

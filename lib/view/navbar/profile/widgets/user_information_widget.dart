@@ -1,4 +1,5 @@
 import 'package:carvana/models/auth/user_model.dart';
+import 'package:carvana/view/navbar/profile/edit_profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -25,12 +26,9 @@ class UserInformationWidget extends StatelessWidget {
                 child: Icon(Icons.person, size: 40, color: AppColors.primaryColor),
               ),
             )
-          : Container(
-              width: Get.width * 0.15,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: NetworkImage(user.image)),
-              ),
+          : CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(user.image),
             ),
       title: Text(user.username, style: AppTextStyles.h1Bold.copyWith(fontWeight: FontWeight.w900, fontSize: 20)),
       subtitle: Padding(
@@ -40,20 +38,25 @@ class UserInformationWidget extends StatelessWidget {
           style: AppTextStyles.h1.copyWith(fontSize: 13, color: AppColors.primaryColor),
         ),
       ),
-      trailing: SizedBox(
-        width: 50,
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            height: 25,
-            width: 25,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              border: Border.all(color: AppColors.primaryColor, width: 2),
-            ),
-            child: const Center(
-              child: Icon(Icons.edit, size: 15, color: AppColors.primaryColor),
+      trailing: GestureDetector(
+        onTap: () {
+          Get.to(() => EditProfileView(userModel: user));
+        },
+        child: SizedBox(
+          width: 50,
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              height: 25,
+              width: 25,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(color: AppColors.primaryColor, width: 2),
+              ),
+              child: const Center(
+                child: Icon(Icons.edit, size: 15, color: AppColors.primaryColor),
+              ),
             ),
           ),
         ),
