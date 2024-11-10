@@ -19,7 +19,7 @@ class AboutUsView extends StatelessWidget {
         title: Text("About Us", style: AppTextStyles.h1Bold),
       ),
       body: FutureBuilder(
-          future: settingController.getTermsAndCondition(),
+          future: settingController.getAboutUs(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
@@ -60,7 +60,7 @@ class AboutUsView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        data['termsAndConditions'],
+                        data['aboutUs'],
                         style: AppTextStyles.h2.copyWith(fontSize: 16),
                       ),
                     ),
