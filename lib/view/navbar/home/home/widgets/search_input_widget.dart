@@ -5,12 +5,16 @@ import '../../../../../res/colors/app_colors.dart';
 import '../../../../../res/text_styles/app_text_styles.dart';
 
 class SearchInputWidget extends StatelessWidget {
-  const SearchInputWidget({super.key});
+  final TextEditingController controller;
+  final Function(String? v)? onChange;
+  const SearchInputWidget({super.key, required this.controller, this.onChange});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: TextField(
+        controller: controller,
+        onChanged: onChange,
         decoration: InputDecoration(
           fillColor: AppColors.textInputColor,
           filled: true,

@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 class TermsAndConditionView extends StatelessWidget {
   TermsAndConditionView({super.key});
+
   final settingController = Get.put(SettingViewController());
 
   @override
@@ -60,7 +61,10 @@ class TermsAndConditionView extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         data['termsAndConditions'],
-                        style: AppTextStyles.h2.copyWith(fontSize: 16),
+                        style: AppTextStyles.h2.copyWith(
+                          fontSize: 14,
+                          color: AppColors.primaryBlack.withOpacity(0.8),
+                        ),
                       ),
                     ),
                   ),

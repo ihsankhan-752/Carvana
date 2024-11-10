@@ -7,7 +7,9 @@ import '../../../../../res/colors/app_colors.dart';
 import '../../../../../res/text_styles/app_text_styles.dart';
 
 class SearchCardWidget extends StatelessWidget {
-  const SearchCardWidget({super.key});
+  final TextEditingController controller;
+  final Function(String? v)? onChange;
+  const SearchCardWidget({super.key, required this.controller, this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,14 @@ class SearchCardWidget extends StatelessWidget {
                 style: AppTextStyles.h1Bold.copyWith(fontSize: 22, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    SearchInputWidget(),
+                    SearchInputWidget(
+                      controller: controller,
+                      onChange: onChange,
+                    ),
                     SizedBox(width: 15),
                     FilterWidget(),
                   ],

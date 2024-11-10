@@ -17,6 +17,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final carViewController = Get.put(CarViewController());
+
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +28,12 @@ class _HomeViewState extends State<HomeView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ProfileHeaderWidget(),
-            const SearchCardWidget(),
+            SearchCardWidget(
+              controller: searchController,
+              onChange: (v) {
+                setState(() {});
+              },
+            ),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +80,12 @@ class _HomeViewState extends State<HomeView> {
                   itemBuilder: (context, index) {
                     final car = carList[index];
 
-                    return CarCardWidget(carModel: car);
+                    if (searchController.text.isEmpty ||
+                        car.name.toString().toLowerCase().contains(searchController.text.toLowerCase())) {
+                      return CarCardWidget(carModel: car);
+                    } else {
+                      return const SizedBox();
+                    }
                   },
                 );
               },
