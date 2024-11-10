@@ -18,4 +18,16 @@ class SettingViewController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  Future<Map<String, dynamic>> getContactUs() async {
+    try {
+      isLoading.value = true;
+      Map<String, dynamic> data = await settingRepository.getContactUs();
+      return data;
+    } catch (e) {
+      throw GeneralException(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

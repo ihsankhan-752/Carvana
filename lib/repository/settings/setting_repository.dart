@@ -6,4 +6,8 @@ class SettingRepository {
   Future<Map<String, dynamic>> getTermsAndConditions() async {
     return await settingServices.getTermsAndCondition();
   }
+
+  Future<Map<String, dynamic>> getContactUs() async {
+    return await settingServices.getContactUs();
+  }
 }
