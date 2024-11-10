@@ -32,11 +32,12 @@ class CarBrandsView extends StatelessWidget {
             return Center(child: Text("Error: ${snapshot.error}"));
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text("No cars found"));
+            return Center(child: Text("No cars found", style: AppTextStyles.h1Bold));
           }
 
           final carList = snapshot.data!;
           return ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             itemCount: carList.length,
             itemBuilder: (context, index) {
               final car = carList[index];
