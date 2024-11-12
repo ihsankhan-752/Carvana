@@ -1,10 +1,7 @@
-import 'dart:io';
-
-import 'package:carvana/res/assets/app_images.dart';
+import 'package:carvana/view/navbar/profile/widgets/get_bg_image_and_camera_icon_widget.dart';
 import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../../../models/auth/user_model.dart';
 import '../../../../../res/colors/app_colors.dart';
@@ -53,12 +50,12 @@ class _PassportViewState extends State<PassportView> {
                   color: AppColors.primaryGrey.withOpacity(0.3),
                   image: imageController.image.value != null || widget.userModel.passportImage.isNotEmpty
                       ? DecorationImage(
-                          image: _getBackgroundImage(),
+                          image: getBackgroundImage(widget.userModel.passportImage),
                           fit: BoxFit.cover,
                         )
                       : null,
                 ),
-                child: _getCameraIcon(),
+                child: getCameraIcon(),
               ),
             ],
           ),
@@ -86,30 +83,5 @@ class _PassportViewState extends State<PassportView> {
         }),
       ),
     );
-  }
-
-  ImageProvider _getBackgroundImage() {
-    if (imageController.image.value != null) {
-      return FileImage(File(imageController.image.value!.path));
-    } else if (widget.userModel.passportImage.isNotEmpty) {
-      return NetworkImage(widget.userModel.passportImage);
-    } else {
-      return const AssetImage(AppImages.appLogo);
-    }
-  }
-
-  Widget _getCameraIcon() {
-    return imageController.image.value == null
-        ? GestureDetector(
-            onTap: () async {
-              try {
-                await imageController.pickImage(ImageSource.gallery);
-              } catch (e) {
-                Get.snackbar("Error", "Could not pick image: $e");
-              }
-            },
-            child: const Icon(Icons.camera_alt, size: 50, color: AppColors.primaryBlack),
-          )
-        : const SizedBox.shrink();
   }
 }
