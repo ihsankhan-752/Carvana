@@ -58,4 +58,8 @@ class AuthRepository {
   Future<void> updateUser(Map<String, dynamic> data) async {
     await _authFireStoreServices.updateUserInformation(data);
   }
+
+  Future<void> updatePassportImage(String image) async {
+    await _authFireStoreServices.updatePassportImage(image);
+  }
 }

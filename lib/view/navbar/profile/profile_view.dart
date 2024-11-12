@@ -1,6 +1,7 @@
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/routes/routes_name.dart';
+import 'package:carvana/view/navbar/profile/passport/passport_view.dart';
 import 'package:carvana/view/navbar/profile/widgets/profile_list_tile_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_document_card_widget.dart';
 import 'package:carvana/view/navbar/profile/widgets/user_information_widget.dart';
@@ -31,14 +32,18 @@ class ProfileView extends StatelessWidget {
               UserInformationWidget(user: user),
               const Divider(),
               SizedBox(height: Get.height * 0.02),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   UserDocumentCardWidget(
+                    onPressed: () {},
                     documentName: "Licence",
                     image: AppIcons.licenseIcon,
                   ),
                   UserDocumentCardWidget(
+                    onPressed: () {
+                      Get.to(() => PassportView(userModel: user));
+                    },
                     documentName: "Passport",
                     image: AppIcons.passportIcon,
                   ),

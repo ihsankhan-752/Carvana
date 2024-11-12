@@ -143,4 +143,32 @@ class AuthViewModel extends GetxController {
       isLoading.value = false;
     }
   }
+
+  Future<void> updatePassportImage({
+    File? image,
+  }) async {
+    try {
+      isLoading.value = true;
+      String? imageUrl;
+
+      DocumentSnapshot snap =
+          await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get();
+
+      if (image != null) {
+        imageUrl = await StorageServices().uploadFileImage(image);
+      } else {
+        imageUrl = snap['passportImage'];
+      }
+      Map<String, dynamic> updatedData = {
+        'passportImage': imageUrl,
+      };
+      await _authRepository.updateUser(updatedData);
+      Utils.toastMessage("Changes Saved");
+      Get.back();
+    } catch (e) {
+      throw GeneralException(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
