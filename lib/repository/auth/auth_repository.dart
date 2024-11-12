@@ -62,4 +62,8 @@ class AuthRepository {
   Future<void> updatePassportImage(String image) async {
     await _authFireStoreServices.updatePassportImage(image);
   }
+
+  Future<void> updateLicenseImage(String image) async {
+    await _authFireStoreServices.updateLicenseImage(image);
+  }
 }

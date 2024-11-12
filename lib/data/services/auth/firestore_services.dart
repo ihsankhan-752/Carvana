@@ -48,4 +48,14 @@ class FireStoreAuthServices {
       throw GeneralException(e.toString());
     }
   }
+
+  Future<void> updateLicenseImage(String image) async {
+    try {
+      await userCollection.doc(FirebaseAuth.instance.currentUser!.uid).update({
+        'licenseImage': image,
+      });
+    } catch (e) {
+      throw GeneralException(e.toString());
+    }
+  }
 }

@@ -75,7 +75,7 @@ class _LicenseViewState extends State<LicenseView> {
               : PrimaryButton(
                   title: "Save",
                   onPressed: () {
-                    authController.updatePassportImage(
+                    authController.updateLicenseImage(
                       image: imageController.image.value,
                     );
                   },
