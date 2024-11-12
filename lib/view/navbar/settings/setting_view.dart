@@ -1,19 +1,19 @@
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/routes/routes_name.dart';
-import 'package:carvana/view/navbar/profile/license/license_view.dart';
-import 'package:carvana/view/navbar/profile/passport/passport_view.dart';
-import 'package:carvana/view/navbar/profile/widgets/profile_list_tile_widget.dart';
-import 'package:carvana/view/navbar/profile/widgets/user_document_card_widget.dart';
-import 'package:carvana/view/navbar/profile/widgets/user_information_widget.dart';
+import 'package:carvana/view/navbar/settings/widgets/profile_list_tile_widget.dart';
+import 'package:carvana/view/navbar/settings/widgets/user_document_card_widget.dart';
+import 'package:carvana/view/navbar/settings/widgets/user_information_widget.dart';
 import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/utils.dart';
+import 'my_profile/license/license_view.dart';
+import 'my_profile/passport/passport_view.dart';
 
-class ProfileView extends StatelessWidget {
-  ProfileView({super.key});
+class SettingView extends StatelessWidget {
+  SettingView({super.key});
 
   final AuthViewModel _authViewModel = Get.find<AuthViewModel>();
   @override

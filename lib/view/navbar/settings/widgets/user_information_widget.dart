@@ -1,11 +1,11 @@
 import 'package:carvana/models/auth/user_model.dart';
-import 'package:carvana/view/navbar/profile/edit_profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../res/colors/app_colors.dart';
 import '../../../../res/text_styles/app_text_styles.dart';
+import '../my_profile/edit_profile/edit_profile_view.dart';
 
 class UserInformationWidget extends StatelessWidget {
   final UserModel user;

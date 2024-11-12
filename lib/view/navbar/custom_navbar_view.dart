@@ -1,7 +1,7 @@
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/view/navbar/favorite/favorite_view.dart';
 import 'package:carvana/view/navbar/notification/notification_view.dart';
-import 'package:carvana/view/navbar/profile/profile_view.dart';
+import 'package:carvana/view/navbar/settings/setting_view.dart';
 import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
 import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -72,7 +72,7 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
                     currentIndex = 3;
                   });
                 },
-                icon: Icons.person,
+                icon: Icons.settings,
                 color: currentIndex == 3 ? AppColors.primaryColor : AppColors.primaryBlack,
               ),
             ],
@@ -88,7 +88,7 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
               const HomeView(),
               const FavoriteView(),
               const NotificationView(),
-              ProfileView(),
+              SettingView(),
             ],
           ),
         ),

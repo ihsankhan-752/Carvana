@@ -4,9 +4,6 @@ import 'package:carvana/view/auth/forgot_password_view.dart';
 import 'package:carvana/view/auth/login_view.dart';
 import 'package:carvana/view/auth/signup_view.dart';
 import 'package:carvana/view/navbar/home/check_out/check_out_view.dart';
-import 'package:carvana/view/navbar/profile/about_us/about_us_view.dart';
-import 'package:carvana/view/navbar/profile/contact_us/contact_us_view.dart';
-import 'package:carvana/view/navbar/profile/terms_and_condition/terms_and_condition_view.dart';
 import 'package:carvana/view/onboarding/first_onboarding_view.dart';
 import 'package:carvana/view/onboarding/second_onboarding_view.dart';
 import 'package:carvana/view/onboarding/third_onboarding_view.dart';
@@ -14,6 +11,9 @@ import 'package:get/get.dart';
 
 import '../../view/navbar/custom_navbar_view.dart';
 import '../../view/navbar/home/booking/booking_view.dart';
+import '../../view/navbar/settings/about_us/about_us_view.dart';
+import '../../view/navbar/settings/contact_us/contact_us_view.dart';
+import '../../view/navbar/settings/terms_and_condition/terms_and_condition_view.dart';
 import '../../view/splash/splash_view.dart';
 
 class AppRoutes {

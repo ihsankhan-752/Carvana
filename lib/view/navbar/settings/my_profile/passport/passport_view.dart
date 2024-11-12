@@ -1,4 +1,3 @@
-import 'package:carvana/view/navbar/profile/widgets/get_bg_image_and_camera_icon_widget.dart';
 import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,19 +5,20 @@ import 'package:get/get.dart';
 import '../../../../../models/auth/user_model.dart';
 import '../../../../../res/colors/app_colors.dart';
 import '../../../../../res/components/buttons/primary_button.dart';
+import '../../../../../res/components/image_picking_widget.dart';
 import '../../../../../res/text_styles/app_text_styles.dart';
-import '../../../../res/components/image_picking_widget.dart';
+import '../../widgets/get_bg_image_and_camera_icon_widget.dart';
 
-class LicenseView extends StatefulWidget {
+class PassportView extends StatefulWidget {
   final UserModel userModel;
 
-  const LicenseView({super.key, required this.userModel});
+  const PassportView({super.key, required this.userModel});
 
   @override
-  State<LicenseView> createState() => _LicenseViewState();
+  State<PassportView> createState() => _PassportViewState();
 }
 
-class _LicenseViewState extends State<LicenseView> {
+class _PassportViewState extends State<PassportView> {
   final imageController = Get.put(ImageController());
   final authController = Get.put(AuthViewModel());
 
@@ -33,7 +33,7 @@ class _LicenseViewState extends State<LicenseView> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryWhite,
         centerTitle: true,
-        title: Text("License", style: AppTextStyles.h1Bold),
+        title: Text("Passport", style: AppTextStyles.h1Bold),
       ),
       body: Obx(() {
         return Padding(
@@ -48,9 +48,9 @@ class _LicenseViewState extends State<LicenseView> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.primaryGrey.withOpacity(0.3),
-                  image: imageController.image.value != null || widget.userModel.licenseImage.isNotEmpty
+                  image: imageController.image.value != null || widget.userModel.passportImage.isNotEmpty
                       ? DecorationImage(
-                          image: getBackgroundImage(widget.userModel.licenseImage),
+                          image: getBackgroundImage(widget.userModel.passportImage),
                           fit: BoxFit.cover,
                         )
                       : null,
@@ -75,7 +75,7 @@ class _LicenseViewState extends State<LicenseView> {
               : PrimaryButton(
                   title: "Save",
                   onPressed: () {
-                    authController.updateLicenseImage(
+                    authController.updatePassportImage(
                       image: imageController.image.value,
                     );
                   },
