@@ -1,4 +1,5 @@
 import 'package:carvana/models/car/car_model.dart';
+import 'package:carvana/utils/utils.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/calender_widget.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/car_information_widget.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/pick_time_widget.dart';
@@ -25,10 +26,14 @@ class _BookingViewState extends State<BookingView> {
   BookingViewController bookingViewController = Get.put(BookingViewController());
   BookingCalenderController bookingTimeAndDateController = Get.put(BookingCalenderController());
 
-  double calculateTotalPrice(TimeOfDay pickUpTime, TimeOfDay returnTime) {
-    final now = DateTime.now();
-    final pickUpDateTime = DateTime(now.year, now.month, now.day, pickUpTime.hour, pickUpTime.minute);
-    final returnDateTime = DateTime(now.year, now.month, now.day, returnTime.hour, returnTime.minute);
+  double calculateTotalPrice(TimeOfDay pickUpTime, TimeOfDay returnTime, DateTime selectedDate) {
+    final pickUpDateTime = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, pickUpTime.hour, pickUpTime.minute);
+    final returnDateTime = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, returnTime.hour, returnTime.minute);
+
+    if (returnDateTime.isBefore(pickUpDateTime)) {
+      print("Return time cannot be earlier than pick-up time.");
+      return 0.0;
+    }
 
     final duration = returnDateTime.difference(pickUpDateTime);
 
@@ -85,7 +90,13 @@ class _BookingViewState extends State<BookingView> {
                     TimeOfDay pickUpTime = bookingTimeAndDateController.selectedPickUpTime.value;
                     TimeOfDay returnTime = bookingTimeAndDateController.selectedReturnTime.value;
 
-                    double totalPrice = calculateTotalPrice(pickUpTime, returnTime);
+                    double totalPrice =
+                        calculateTotalPrice(pickUpTime, returnTime, bookingTimeAndDateController.selectedDate.value);
+
+                    if (totalPrice == 0.0) {
+                      Utils.toastMessage("Return time cannot be earlier than pick-up time.");
+                      return;
+                    }
 
                     String returnTimeString = returnTime.format(context);
                     String pickUpTimeString = pickUpTime.format(context);

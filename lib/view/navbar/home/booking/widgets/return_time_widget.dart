@@ -29,7 +29,7 @@ class _ReturnTimeWidgetState extends State<ReturnTimeWidget> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: GestureDetector(
             onTap: () {
-              bookingController.selectPickUpTime(context);
+              bookingController.selectReturnTime(context);
             },
             child: Row(
               children: [

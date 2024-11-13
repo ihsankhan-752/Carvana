@@ -10,6 +10,7 @@ class BookingModel {
   String pickUpTime;
   String returnTime;
   String paymentType;
+  String bookingStatus;
 
   BookingModel({
     required this.userId,
@@ -21,6 +22,7 @@ class BookingModel {
     required this.pickUpTime,
     required this.returnTime,
     required this.paymentType,
+    required this.bookingStatus,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,6 +36,7 @@ class BookingModel {
       'pickUpTime': pickUpTime,
       'returnTime': returnTime,
       'paymentType': paymentType,
+      'bookingStatus': bookingStatus,
     };
   }
 
@@ -48,6 +51,7 @@ class BookingModel {
       pickUpTime: map['pickUpTime'] as String,
       returnTime: map['returnTime'] as String,
       paymentType: map['paymentType'] as String,
+      bookingStatus: map['bookingStatus'] as String,
     );
   }
 }

@@ -39,19 +39,19 @@ class BookingViewController extends GetxController {
 
         var bookingId = const Uuid().v4();
         BookingModel bookingModel = BookingModel(
-          userId: userId,
-          sellerId: sellerId,
-          carId: carId,
-          bookingId: bookingId,
-          pickUpDate: pickUpDate,
-          totalPrice: totalPrice!,
-          pickUpTime: pickUpTime,
-          returnTime: returnTime,
-          paymentType: "",
-        );
+            userId: userId,
+            sellerId: sellerId,
+            carId: carId,
+            bookingId: bookingId,
+            pickUpDate: pickUpDate,
+            totalPrice: totalPrice!,
+            pickUpTime: pickUpTime,
+            returnTime: returnTime,
+            paymentType: "",
+            bookingStatus: "Pending");
         await bookingRepository.addBooking(bookingModel, bookingId);
 
-        Get.to(() => CheckOutView(bookingId: bookingId));
+        Get.to(() => CheckOutView(bookingId: bookingId, totalPrice: totalPrice));
       } catch (error) {
         Utils.toastMessage("Failed to add booking. Please try again later.");
       } finally {

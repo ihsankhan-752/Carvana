@@ -7,7 +7,8 @@ import '../../../../res/text_styles/app_text_styles.dart';
 
 class CheckOutView extends StatefulWidget {
   final String bookingId;
-  const CheckOutView({super.key, required this.bookingId});
+  final double totalPrice;
+  const CheckOutView({super.key, required this.bookingId, required this.totalPrice});
 
   @override
   State<CheckOutView> createState() => _CheckOutViewState();
@@ -27,6 +28,42 @@ class _CheckOutViewState extends State<CheckOutView> {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: [
+            Container(
+              width: Get.width,
+              decoration: BoxDecoration(
+                color: AppColors.primaryGrey.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Sub Total:"),
+                        Text(widget.totalPrice.toStringAsFixed(1) + " \$"),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tax:"),
+                        Text("0 \$"),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total:", style: AppTextStyles.h1Bold),
+                        Text(widget.totalPrice.toStringAsFixed(1) + " \$", style: AppTextStyles.h1Bold),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Card(
               color: AppColors.primaryWhite,
               child: RadioListTile(
