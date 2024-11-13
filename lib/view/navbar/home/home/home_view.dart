@@ -1,7 +1,6 @@
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:carvana/view/navbar/home/home/widgets/car_card_widget.dart';
-import 'package:carvana/view/navbar/home/home/widgets/profile_header_widget.dart';
 import 'package:carvana/view/navbar/home/home/widgets/search_card_widget.dart';
 import 'package:carvana/view/navbar/home/home/widgets/top_brand_widget.dart';
 import 'package:carvana/view_model/controllers/cars/car_view_controller.dart';
@@ -27,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProfileHeaderWidget(),
+            // ProfileHeaderWidget(),
             SearchCardWidget(
               controller: searchController,
               onChange: (v) {
