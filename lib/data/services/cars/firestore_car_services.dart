@@ -52,7 +52,7 @@ class FireStoreCarServices {
       if (!docSnap.exists) {
         return [];
       }
-      List<dynamic> favoriteCarIds = docSnap['favoriteCars'] ?? [];
+      List<dynamic> favoriteCarIds = docSnap['favouriteCars'] ?? [];
 
       List<CarModel> favoriteCars = [];
       for (String carId in favoriteCarIds) {
