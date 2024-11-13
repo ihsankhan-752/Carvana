@@ -1,4 +1,4 @@
-import 'package:carvana/models/contact_us_model.dart';
+import 'package:carvana/models/profile/contact_us_model.dart';
 import 'package:carvana/view/navbar/settings/contact_us/widgets/contact_us_card_title_value_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

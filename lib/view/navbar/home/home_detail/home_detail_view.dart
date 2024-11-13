@@ -1,4 +1,4 @@
-import 'package:carvana/models/car_model.dart';
+import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../models/car_model.dart';
+import '../../../../../models/car/car_model.dart';
 import '../../../../../res/colors/app_colors.dart';
 import '../../../../../res/components/car_shimmer_loading_widget.dart';
 import '../../../../../res/text_styles/app_text_styles.dart';

@@ -1,5 +1,5 @@
 import 'package:carvana/data/services/cars/firestore_car_services.dart';
-import 'package:carvana/models/car_model.dart';
+import 'package:carvana/models/car/car_model.dart';
 
 class CarRepository {
   final FireStoreCarServices carServices = FireStoreCarServices();

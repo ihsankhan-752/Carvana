@@ -13,7 +13,7 @@ class PickTimeWidget extends StatefulWidget {
 }
 
 class _PickTimeWidgetState extends State<PickTimeWidget> {
-  final BookingController bookingController = Get.put(BookingController());
+  final BookingCalenderController bookingController = Get.put(BookingCalenderController());
 
   @override
   Widget build(BuildContext context) {

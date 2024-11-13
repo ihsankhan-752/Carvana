@@ -13,7 +13,7 @@ class ReturnTimeWidget extends StatefulWidget {
 }
 
 class _ReturnTimeWidgetState extends State<ReturnTimeWidget> {
-  final BookingController bookingController = Get.put(BookingController());
+  final BookingCalenderController bookingController = Get.put(BookingCalenderController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class _ReturnTimeWidgetState extends State<ReturnTimeWidget> {
                 const Icon(Icons.access_time_outlined, size: 22, color: AppColors.primaryBlack),
                 const SizedBox(width: 10),
                 Text(
-                  bookingController.selectedPickUpTime.value.format(context),
+                  bookingController.selectedReturnTime.value.format(context),
                   style: AppTextStyles.h1Bold.copyWith(fontSize: 14),
                 ),
               ],

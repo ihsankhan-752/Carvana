@@ -1,7 +1,7 @@
 import 'package:carvana/data/app_exceptions.dart';
 import 'package:get/get.dart';
 
-import '../../../models/car_model.dart';
+import '../../../models/car/car_model.dart';
 import '../../../repository/cars/car_repository.dart';
 
 class CarViewController extends GetxController {

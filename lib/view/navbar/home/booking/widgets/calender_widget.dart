@@ -14,7 +14,7 @@ class CalenderWidget extends StatefulWidget {
 }
 
 class _CalenderWidgetState extends State<CalenderWidget> {
-  final bookingController = Get.put(BookingController());
+  final bookingController = Get.put(BookingCalenderController());
   @override
   Widget build(BuildContext context) {
     return Obx(() {

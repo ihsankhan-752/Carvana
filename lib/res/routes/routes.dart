@@ -3,7 +3,6 @@ import 'package:carvana/view/auth/congratulation_message_view.dart';
 import 'package:carvana/view/auth/forgot_password_view.dart';
 import 'package:carvana/view/auth/login_view.dart';
 import 'package:carvana/view/auth/signup_view.dart';
-import 'package:carvana/view/navbar/home/check_out/check_out_view.dart';
 import 'package:carvana/view/onboarding/first_onboarding_view.dart';
 import 'package:carvana/view/onboarding/second_onboarding_view.dart';
 import 'package:carvana/view/onboarding/third_onboarding_view.dart';
@@ -59,11 +58,6 @@ class AppRoutes {
         page: () => const CustomNavbarView(),
       ),
 
-      GetPage(
-        name: RoutesName.checkOutView,
-        page: () => const CheckOutView(),
-        transition: Transition.rightToLeftWithFade,
-      ),
       GetPage(
         name: RoutesName.termsAndConditionView,
         page: () => TermsAndConditionView(),

@@ -2,7 +2,7 @@ import 'package:carvana/data/app_exceptions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../models/car_model.dart';
+import '../../../models/car/car_model.dart';
 
 class FireStoreCarServices {
   final CollectionReference carCollection = FirebaseFirestore.instance.collection('cars');

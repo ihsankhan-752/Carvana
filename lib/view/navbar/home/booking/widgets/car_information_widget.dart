@@ -1,4 +1,4 @@
-import 'package:carvana/models/car_model.dart';
+import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

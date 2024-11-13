@@ -4,7 +4,7 @@ import 'package:carvana/view_model/controllers/cars/car_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../models/car_model.dart';
+import '../../../../models/car/car_model.dart';
 import '../home/widgets/car_card_widget.dart';
 
 class CarBrandsView extends StatelessWidget {

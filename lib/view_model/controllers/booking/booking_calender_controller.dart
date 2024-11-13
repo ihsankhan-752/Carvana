@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class BookingController extends GetxController {
+class BookingCalenderController extends GetxController {
   Rx<DateTime> selectedDate = DateTime.now().obs;
 
   Rx<CalendarFormat> calendarFormat = CalendarFormat.month.obs;

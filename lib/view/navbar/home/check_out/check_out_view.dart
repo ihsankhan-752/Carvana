@@ -6,7 +6,8 @@ import '../../../../res/components/buttons/primary_button.dart';
 import '../../../../res/text_styles/app_text_styles.dart';
 
 class CheckOutView extends StatefulWidget {
-  const CheckOutView({super.key});
+  final String bookingId;
+  const CheckOutView({super.key, required this.bookingId});
 
   @override
   State<CheckOutView> createState() => _CheckOutViewState();
