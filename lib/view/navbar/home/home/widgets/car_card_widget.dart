@@ -86,13 +86,17 @@ class CarCardWidget extends StatelessWidget {
                           color: AppColors.primaryGrey.withOpacity(0.1),
                         ),
                         child: Center(
-                          child: Icon(
-                            userController.currentUser.value!.favouriteCars.contains(carModel.carId)
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: AppColors.primaryGrey.withOpacity(0.7),
-                            size: 20,
-                          ),
+                          child: userController.currentUser.value!.favouriteCars.contains(carModel.carId)
+                              ? const Icon(
+                                  Icons.favorite,
+                                  color: AppColors.primaryColor,
+                                  size: 20,
+                                )
+                              : Icon(
+                                  Icons.favorite_border,
+                                  color: AppColors.primaryGrey.withOpacity(0.7),
+                                  size: 20,
+                                ),
                         ),
                       );
                     }),

@@ -1,6 +1,9 @@
+import 'package:carvana/models/car_model.dart';
 import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/calender_widget.dart';
+import 'package:carvana/view/navbar/home/booking/widgets/car_information_widget.dart';
 import 'package:carvana/view/navbar/home/booking/widgets/pick_time_widget.dart';
+import 'package:carvana/view/navbar/home/booking/widgets/return_time_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +12,8 @@ import '../../../../res/components/buttons/primary_button.dart';
 import '../../../../res/text_styles/app_text_styles.dart';
 
 class BookingView extends StatefulWidget {
-  const BookingView({super.key});
+  final CarModel carModel;
+  const BookingView({super.key, required this.carModel});
 
   @override
   State<BookingView> createState() => _BookingViewState();
@@ -29,13 +33,22 @@ class _BookingViewState extends State<BookingView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 10),
+            Text("Car Information", style: AppTextStyles.h1Bold),
+            const SizedBox(height: 10),
+            CarInformationWidget(carModel: widget.carModel),
+            const SizedBox(height: 20),
             Text("Choose Date", style: AppTextStyles.h1Bold),
             const SizedBox(height: 10),
             const CalenderWidget(),
             const SizedBox(height: 20),
-            Text("Pick Time", style: AppTextStyles.h1Bold),
+            Text("Pick-Up Time", style: AppTextStyles.h1Bold),
             const SizedBox(height: 10),
             const PickTimeWidget(),
+            const SizedBox(height: 20),
+            Text("Return Time", style: AppTextStyles.h1Bold),
+            const SizedBox(height: 10),
+            const ReturnTimeWidget(),
           ],
         ),
       ),
@@ -47,7 +60,7 @@ class _BookingViewState extends State<BookingView> {
           onPressed: () {
             Get.toNamed(RoutesName.checkOutView);
           },
-          title: "Book Now For \$1200/Day",
+          title: "Book Now For \$${widget.carModel.pricePerHour.toStringAsFixed(1)}/Hourly",
         ),
       ),
     );

@@ -33,10 +33,10 @@ class _PickTimeWidgetState extends State<PickTimeWidget> {
             },
             child: Row(
               children: [
-                const Icon(Icons.access_time_outlined, size: 20, color: AppColors.primaryColor),
+                const Icon(Icons.access_time_outlined, size: 22, color: AppColors.primaryBlack),
                 const SizedBox(width: 10),
                 Text(
-                  bookingController.selectedTime.value.format(context),
+                  bookingController.selectedPickUpTime.value.format(context),
                   style: AppTextStyles.h1Bold.copyWith(fontSize: 14),
                 ),
               ],

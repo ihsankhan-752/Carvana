@@ -10,7 +10,6 @@ import 'package:carvana/view/onboarding/third_onboarding_view.dart';
 import 'package:get/get.dart';
 
 import '../../view/navbar/custom_navbar_view.dart';
-import '../../view/navbar/home/booking/booking_view.dart';
 import '../../view/navbar/settings/about_us/about_us_view.dart';
 import '../../view/navbar/settings/contact_us/contact_us_view.dart';
 import '../../view/navbar/settings/terms_and_condition/terms_and_condition_view.dart';
@@ -59,11 +58,7 @@ class AppRoutes {
         name: RoutesName.navbarView,
         page: () => const CustomNavbarView(),
       ),
-      GetPage(
-        name: RoutesName.bookingView,
-        page: () => const BookingView(),
-        transition: Transition.rightToLeftWithFade,
-      ),
+
       GetPage(
         name: RoutesName.checkOutView,
         page: () => const CheckOutView(),

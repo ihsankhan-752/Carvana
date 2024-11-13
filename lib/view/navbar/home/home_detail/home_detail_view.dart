@@ -3,8 +3,8 @@ import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/colors/app_colors.dart';
 import 'package:carvana/res/components/buttons/primary_button.dart';
 import 'package:carvana/res/components/car_shimmer_loading_widget.dart';
-import 'package:carvana/res/routes/routes_name.dart';
 import 'package:carvana/res/text_styles/app_text_styles.dart';
+import 'package:carvana/view/navbar/home/booking/booking_view.dart';
 import 'package:carvana/view/navbar/home/home_detail/widgets/feature_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -105,7 +105,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
         width: Get.width,
         child: PrimaryButton(
           onPressed: () {
-            Get.toNamed(RoutesName.bookingView);
+            Get.to(() => BookingView(carModel: widget.carModel));
           },
           title: "Book Now For \$ ${widget.carModel.pricePerHour.toStringAsFixed(1)} / Per Hour",
         ),
