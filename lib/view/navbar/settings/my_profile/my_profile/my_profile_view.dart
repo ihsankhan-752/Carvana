@@ -4,6 +4,7 @@ import 'package:carvana/res/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../widgets/passport_and_license_image_widget.dart';
 import '../../widgets/user_profile_title_value_widget.dart';
 
 class MyProfileView extends StatelessWidget {
@@ -27,7 +28,7 @@ class MyProfileView extends StatelessWidget {
             const SizedBox(height: 10),
             Center(
               child: CircleAvatar(
-                radius: 45,
+                radius: 55,
                 backgroundImage: NetworkImage(user.image),
               ),
             ),
@@ -36,6 +37,7 @@ class MyProfileView extends StatelessWidget {
             SizedBox(
               width: Get.width,
               child: Card(
+                color: AppColors.primaryWhite,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -47,7 +49,11 @@ class MyProfileView extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 20),
+            Text("Passport & License", style: AppTextStyles.h1Bold),
+            const SizedBox(height: 10),
+            PassportAndLicenseImageWidget(user: user),
           ],
         ),
       ),
