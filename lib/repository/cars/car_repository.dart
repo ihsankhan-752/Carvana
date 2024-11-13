@@ -11,4 +11,16 @@ class CarRepository {
   Stream<List<CarModel>> getCarByBrand(String brandName) {
     return carServices.getCarsByBrand(brandName);
   }
+
+  Future<void> addCarToFavourite(String carId) async {
+    return carServices.addCarToFavorite(carId);
+  }
+
+  Future<void> removeCarFromFavourite(String carId) async {
+    return carServices.removeCarFromFavourite(carId);
+  }
+
+  Stream<List<CarModel>> getFavouriteCars() {
+    return carServices.getFavoriteCars();
+  }
 }
