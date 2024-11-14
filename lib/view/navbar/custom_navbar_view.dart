@@ -4,6 +4,7 @@ import 'package:carvana/view/navbar/notification/notification_view.dart';
 import 'package:carvana/view/navbar/settings/setting_view.dart';
 import 'package:carvana/view/navbar/widgets/custom_tab_widget_navbar_view.dart';
 import 'package:carvana/view_model/controllers/auth/auth_view_model.dart';
+import 'package:carvana/view_model/controllers/cars/car_view_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,10 +22,13 @@ class _CustomNavbarViewState extends State<CustomNavbarView> {
   int currentIndex = 0;
 
   final authController = Get.put(AuthViewModel());
+  final carController = Get.put(CarViewController());
 
   @override
   void initState() {
     authController.fetchUserInformation(FirebaseAuth.instance.currentUser!.uid);
+    carController.getAllCar();
+    carController.loadFavouriteCars();
     super.initState();
   }
 

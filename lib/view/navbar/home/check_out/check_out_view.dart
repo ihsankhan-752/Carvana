@@ -1,4 +1,6 @@
+import 'package:carvana/view/navbar/home/check_out/widgets/checkout_header_widget_for_payment_detail.dart';
 import 'package:carvana/view/navbar/home/check_out/widgets/payment_method_selection_widget.dart';
+import 'package:carvana/view_model/controllers/booking/booking_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +18,7 @@ class CheckOutView extends StatefulWidget {
 }
 
 class _CheckOutViewState extends State<CheckOutView> {
+  final bookingController = Get.put(BookingViewController());
   int groupValue = 1;
   @override
   Widget build(BuildContext context) {
@@ -30,44 +33,7 @@ class _CheckOutViewState extends State<CheckOutView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: Get.width,
-              decoration: BoxDecoration(
-                color: AppColors.primaryGrey.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Sub Total:"),
-                        Text("${widget.totalPrice.toStringAsFixed(1)} \$"),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Tax:"),
-                        Text("0 \$"),
-                      ],
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Total:", style: AppTextStyles.h1Bold),
-                        Text("${widget.totalPrice.toStringAsFixed(1)} \$", style: AppTextStyles.h1Bold),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            CheckoutHeaderWidgetForPaymentDetail(totalPrice: widget.totalPrice),
             const SizedBox(height: 30),
             Text("Payment Methods:", style: AppTextStyles.h1Bold),
             const SizedBox(height: 10),
@@ -95,15 +61,28 @@ class _CheckOutViewState extends State<CheckOutView> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
-        height: Get.height * 0.06,
-        width: Get.width,
-        child: PrimaryButton(
-          onPressed: () {},
-          title: "Pay Now",
-        ),
-      ),
+      bottomNavigationBar: Obx(() {
+        return bookingController.isLoading.value
+            ? Container(
+                margin: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+                height: Get.height * 0.06,
+                width: Get.width,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ))
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: PrimaryButton(
+                  onPressed: () {
+                    bookingController.updatePaymentType(
+                      "Cash By Hand",
+                      widget.bookingId,
+                    );
+                  },
+                  title: "Pay Now",
+                ),
+              );
+      }),
     );
   }
 }

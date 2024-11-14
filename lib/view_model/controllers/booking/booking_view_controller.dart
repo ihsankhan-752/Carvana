@@ -2,6 +2,7 @@ import 'package:carvana/models/booking/booking_model.dart';
 import 'package:carvana/repository/booking/booking_repository.dart';
 import 'package:carvana/utils/utils.dart';
 import 'package:carvana/view/navbar/home/check_out/check_out_view.dart';
+import 'package:carvana/view/navbar/settings/my_booking/my_booking_view.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
@@ -64,7 +65,12 @@ class BookingViewController extends GetxController {
     try {
       isLoading.value = true;
       await bookingRepository.updatePaymentType(bookingId, paymentType);
-      Utils.toastMessage("Booking Added Successfully");
+      isLoading.value = false;
+      Utils.toastMessage("Your request has Been Sent");
+      Get.to(() => MyBookingView());
+      isLoading.value = false;
+
+      // showConfirmDialog();
     } catch (e) {
       isLoading.value = false;
       Utils.toastMessage(e.toString());

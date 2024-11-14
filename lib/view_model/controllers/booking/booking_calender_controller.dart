@@ -7,8 +7,8 @@ class BookingCalenderController extends GetxController {
 
   Rx<CalendarFormat> calendarFormat = CalendarFormat.month.obs;
 
-  Rx<TimeOfDay> selectedPickUpTime = TimeOfDay.now().obs;
-  Rx<TimeOfDay> selectedReturnTime = TimeOfDay.now().obs;
+  Rx<TimeOfDay> selectedPickUpTime = const TimeOfDay(hour: 9, minute: 00).obs;
+  Rx<TimeOfDay> selectedReturnTime = const TimeOfDay(hour: 17, minute: 00).obs;
 
   void getDate(BuildContext context) async {
     DateTime? pickDate = await showDatePicker(

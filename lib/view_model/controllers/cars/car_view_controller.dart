@@ -17,12 +17,21 @@ class CarViewController extends GetxController {
   void onInit() {
     super.onInit();
     carStream.value = carRepository.getAllCars();
+    carStream.value.listen((carList) {
+      if (carList.isNotEmpty) {
+        isInitialLoad.value = false;
+      }
+    });
 
     ever(brandName, (_) {
       carBrandStream.value = carRepository.getCarByBrand(brandName.value);
     });
 
     loadFavouriteCars();
+  }
+
+  void getAllCar() {
+    carStream.value = carRepository.getAllCars();
   }
 
   void updateBrand(String newBrandName) {
