@@ -1,3 +1,4 @@
+import 'package:carvana/view/navbar/home/check_out/widgets/payment_method_selection_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,6 +28,7 @@ class _CheckOutViewState extends State<CheckOutView> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: Get.width,
@@ -41,56 +43,55 @@ class _CheckOutViewState extends State<CheckOutView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Sub Total:"),
-                        Text(widget.totalPrice.toStringAsFixed(1) + " \$"),
+                        const Text("Sub Total:"),
+                        Text("${widget.totalPrice.toStringAsFixed(1)} \$"),
                       ],
                     ),
-                    Row(
+                    const SizedBox(height: 5),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Tax:"),
                         Text("0 \$"),
                       ],
                     ),
-                    Divider(),
+                    const Divider(),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Total:", style: AppTextStyles.h1Bold),
-                        Text(widget.totalPrice.toStringAsFixed(1) + " \$", style: AppTextStyles.h1Bold),
+                        Text("${widget.totalPrice.toStringAsFixed(1)} \$", style: AppTextStyles.h1Bold),
                       ],
                     ),
                   ],
                 ),
               ),
             ),
-            Card(
-              color: AppColors.primaryWhite,
-              child: RadioListTile(
-                value: 1,
-                groupValue: groupValue,
-                onChanged: (v) {
-                  setState(() {
-                    groupValue = v!;
-                  });
-                },
-                title: const Text("Debit/Credit Card"),
-              ),
+            const SizedBox(height: 30),
+            Text("Payment Methods:", style: AppTextStyles.h1Bold),
+            const SizedBox(height: 10),
+            PaymentMethodSelectionWidget(
+              value: 1,
+              onChanged: (v) {
+                setState(() {
+                  groupValue = v!;
+                });
+              },
+              title: "Stripe",
+              groupValue: groupValue,
             ),
-            const SizedBox(height: 20),
-            Card(
-              color: AppColors.primaryWhite,
-              child: RadioListTile(
-                value: 2,
-                groupValue: groupValue,
-                onChanged: (v) {
-                  setState(() {
-                    groupValue = v!;
-                  });
-                },
-                title: const Text("Cash by Hand"),
-              ),
-            )
+            const SizedBox(height: 10),
+            PaymentMethodSelectionWidget(
+              value: 2,
+              onChanged: (v) {
+                setState(() {
+                  groupValue = v!;
+                });
+              },
+              title: "Cash By Hand",
+              groupValue: groupValue,
+            ),
           ],
         ),
       ),
