@@ -1,6 +1,7 @@
 import 'package:carvana/models/auth/user_model.dart';
 import 'package:carvana/res/assets/app_icons.dart';
 import 'package:carvana/res/routes/routes_name.dart';
+import 'package:carvana/view/navbar/settings/my_booking/my_booking_view.dart';
 import 'package:carvana/view/navbar/settings/my_profile/my_profile/my_profile_view.dart';
 import 'package:carvana/view/navbar/settings/widgets/profile_list_tile_widget.dart';
 import 'package:carvana/view/navbar/settings/widgets/user_document_card_widget.dart';
@@ -61,7 +62,10 @@ class SettingView extends StatelessWidget {
                 title: "My Profile",
                 icon: Icons.person,
               ),
-              const ProfileListTileWidget(
+              ProfileListTileWidget(
+                onPressed: () {
+                  Get.to(() => MyBookingView());
+                },
                 title: "My Booking",
                 icon: Icons.calendar_month_sharp,
               ),

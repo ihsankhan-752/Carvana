@@ -11,4 +11,8 @@ class BookingRepository {
   Future<void> updatePaymentType(String bookingId, String paymentType) async {
     await bookingFireStoreServices.updatePaymentType(bookingId, paymentType);
   }
+
+  Stream<List<BookingModel>> getMyBooking() {
+    return bookingFireStoreServices.getMyBooking();
+  }
 }

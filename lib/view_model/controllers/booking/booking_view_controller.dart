@@ -9,6 +9,22 @@ import 'package:uuid/uuid.dart';
 class BookingViewController extends GetxController {
   BookingRepository bookingRepository = BookingRepository();
 
+  Rx<Stream<List<BookingModel>>> getMyBooking = Rx<Stream<List<BookingModel>>>(const Stream.empty());
+
+  RxBool isInitialLoad = true.obs;
+  @override
+  void onInit() {
+    super.onInit();
+
+    getMyBooking.value = bookingRepository.getMyBooking();
+
+    getMyBooking.value.listen((bookingList) {
+      if (bookingList.isNotEmpty) {
+        isInitialLoad.value = false;
+      }
+    });
+  }
+
   RxBool isLoading = false.obs;
 
   bool isDateInPast(DateTime selectedDate) {
@@ -69,8 +85,6 @@ class BookingViewController extends GetxController {
       Utils.toastMessage("Your request has Been Sent");
       Get.to(() => MyBookingView());
       isLoading.value = false;
-
-      // showConfirmDialog();
     } catch (e) {
       isLoading.value = false;
       Utils.toastMessage(e.toString());
