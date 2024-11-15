@@ -1,4 +1,6 @@
+import 'package:carvana/data/app_exceptions.dart';
 import 'package:carvana/models/booking/booking_model.dart';
+import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/repository/booking/booking_repository.dart';
 import 'package:carvana/utils/utils.dart';
 import 'package:carvana/view/navbar/home/check_out/check_out_view.dart';
@@ -9,7 +11,11 @@ import 'package:uuid/uuid.dart';
 class BookingViewController extends GetxController {
   BookingRepository bookingRepository = BookingRepository();
 
+  RxBool isLoading = false.obs;
+
   Rx<Stream<List<BookingModel>>> getMyBooking = Rx<Stream<List<BookingModel>>>(const Stream.empty());
+
+  Rx<CarModel?> selectedCar = Rx<CarModel?>(null);
 
   RxBool isInitialLoad = true.obs;
   @override
@@ -25,7 +31,17 @@ class BookingViewController extends GetxController {
     });
   }
 
-  RxBool isLoading = false.obs;
+  Future<void> fetchSingleBookingCar(String carId) async {
+    try {
+      isLoading.value = true;
+      CarModel car = await bookingRepository.getSingleCar(carId);
+      selectedCar.value = car;
+    } catch (e) {
+      throw GeneralException(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
   bool isDateInPast(DateTime selectedDate) {
     DateTime now = DateTime.now();

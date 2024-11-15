@@ -37,7 +37,18 @@ class MyBookingView extends StatelessWidget {
             itemCount: bookingList!.length,
             itemBuilder: (context, index) {
               final booking = bookingList[index];
-              return Text(booking.userId);
+              bookingController.fetchSingleBookingCar(booking.carId);
+              return Obx(() {
+                final car = bookingController.selectedCar.value;
+                if (car == null) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return Card(
+                  child: Column(
+                    children: [],
+                  ),
+                );
+              });
             },
           );
         },
