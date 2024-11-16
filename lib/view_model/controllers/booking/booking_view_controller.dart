@@ -1,46 +1,24 @@
-import 'package:carvana/data/app_exceptions.dart';
 import 'package:carvana/models/booking/booking_model.dart';
-import 'package:carvana/models/car/car_model.dart';
 import 'package:carvana/repository/booking/booking_repository.dart';
 import 'package:carvana/utils/utils.dart';
+import 'package:carvana/view/navbar/custom_navbar_view.dart';
 import 'package:carvana/view/navbar/home/check_out/check_out_view.dart';
-import 'package:carvana/view/navbar/settings/my_booking/my_booking_view.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
 class BookingViewController extends GetxController {
-  BookingRepository bookingRepository = BookingRepository();
-
+  final BookingRepository bookingRepository = BookingRepository();
   RxBool isLoading = false.obs;
-
   Rx<Stream<List<BookingModel>>> getMyBooking = Rx<Stream<List<BookingModel>>>(const Stream.empty());
 
-  Rx<CarModel?> selectedCar = Rx<CarModel?>(null);
-
-  RxBool isInitialLoad = true.obs;
   @override
   void onInit() {
     super.onInit();
-
-    getMyBooking.value = bookingRepository.getMyBooking();
-
-    getMyBooking.value.listen((bookingList) {
-      if (bookingList.isNotEmpty) {
-        isInitialLoad.value = false;
-      }
-    });
+    getAllBooking();
   }
 
-  Future<void> fetchSingleBookingCar(String carId) async {
-    try {
-      isLoading.value = true;
-      CarModel car = await bookingRepository.getSingleCar(carId);
-      selectedCar.value = car;
-    } catch (e) {
-      throw GeneralException(e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+  void getAllBooking() {
+    getMyBooking.value = bookingRepository.getMyBooking();
   }
 
   bool isDateInPast(DateTime selectedDate) {
@@ -83,6 +61,7 @@ class BookingViewController extends GetxController {
             paymentType: "",
             bookingStatus: "Pending");
         await bookingRepository.addBooking(bookingModel, bookingId);
+        getAllBooking();
 
         Get.to(() => CheckOutView(bookingId: bookingId, totalPrice: totalPrice));
       } catch (error) {
@@ -99,7 +78,9 @@ class BookingViewController extends GetxController {
       await bookingRepository.updatePaymentType(bookingId, paymentType);
       isLoading.value = false;
       Utils.toastMessage("Your request has Been Sent");
-      Get.to(() => MyBookingView());
+
+      //ToDo here we will show dialog
+      Get.to(() => const CustomNavbarView());
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
